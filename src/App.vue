@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import OpenScreen from '@/components/OpenScreen.vue'; 
+import OpenScreen from '@/components/OpenScreen.vue' ; 
 import homePage from '@/components/HomePage.vue';
 
 
