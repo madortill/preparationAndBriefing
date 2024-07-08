@@ -21,7 +21,7 @@
         <home-page  v-if="page === 1" @next-page="nextPage"></home-page>
         <end-screen v-if="page===2"></end-screen>
 
-        <img src="@/assets/media/madortill.png" alt="mador-till" class="mador-till" >
+        <img src="@/assets/media/madortill.png" alt="mador-till" class="mador-till">
     </div>
 </template>
 
