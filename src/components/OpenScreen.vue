@@ -41,7 +41,7 @@
   .text-title {
     color: rgb(83, 82, 82);
     font-family: "Heebo-Bold";
-    font-size: 10rem;
+    font-size: 9.5vw;
     position: absolute;
     bottom: 25%;
     /* floatAnimation 3s ease-in-out infinite; */

@@ -3,9 +3,9 @@
         <!-- <h4 v-if="showTitle" class="text-side-title">{{ arrayTitle[titleIndex] }}</h4> -->
         <main-self-preparation v-if="titleIndex === 0" @move-to-next="nextSub"></main-self-preparation>
 
-        <feedback-call v-if="titleIndex === 1" @move-to-next="nextSub"></feedback-call>
+        <!-- <feedback-call v-if="titleIndex === 1" @move-to-next="nextSub"></feedback-call>
         <locating-source v-if="titleIndex === 2" @move-to-next="nextSub"></locating-source>
-        <objections-feedback v-if="titleIndex === 3" @move-to-next="nextSub"></objections-feedback>
+        <objections-feedback v-if="titleIndex === 3" @move-to-next="nextSub"></objections-feedback> -->
 
         <!-- <component :is="'subj' + titleIndex"></component> -->
 

@@ -3,7 +3,7 @@
       <div v-if="partNum < 5" class="white-window">
         <div class="center-text" v-if="partNum === 0">
           <p class="explain-text pos-start-text">
-            בלומדה זו נתמקד ב-2 השלבים הראשונים ממעגל החניכה: הכנה עצמית ותדרוך.
+            בלומדה זו נתמקד ב-2 השלבים הראשונים ממעגל החניכה: הכנה עצמית ותדריך.
           </p>
         </div>
   
@@ -714,7 +714,7 @@
   .info-text-goal:hover {
     background-color: #dbdbdb;
   }
-  /* 
+  
   .talk-text {
     margin: 3%;
     animation: floatAnimation 3s ease-in-out infinite;
@@ -745,7 +745,7 @@
       visibility: hidden;
       transform: scaleX(0);
       transition: all 0.3s ease-in-out 0s;
-    } */
-  /* } */
+    } 
+ }
   </style>
   
