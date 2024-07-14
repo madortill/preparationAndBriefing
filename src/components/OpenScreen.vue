@@ -41,13 +41,12 @@
   .text-title {
     color: rgb(83, 82, 82);
     font-family: "Heebo-Bold";
-    font-size: 9.5vw;
+    font-size: 8.5vw;
     position: absolute;
-    bottom: 25%;
+    top: 9%;
     /* floatAnimation 3s ease-in-out infinite; */
     animation: floatAnimation 3s ease-in-out infinite;
     width: 60%;
-    height: 50%;
     text-align: center;
   }
   

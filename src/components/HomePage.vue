@@ -82,7 +82,7 @@
   
       <div v-if="partNum > 4">
         <div v-if="!showQuestions">
-          <navbar v-if="showNav" :titleIndex="titleIndex"></navbar>
+          <navbar v-if="showNav" :titleIndex="subIndex"></navbar>
           <information-page
             :titleIndex="titleIndex"
             @move-sub="moveSub"
@@ -136,6 +136,7 @@
           "אם הינך בטוח/ה שרוצה להמשיך בלמידת החומר לחצ/י המשך",
         ],
         arrayAgo: ["משוב", "עיבוד", "תצפית", "תדריך", "הכנה עצמית"],
+        subIndex: -1,
       };
     },
   
@@ -145,25 +146,25 @@
       },
       nextSub() {
         this.showQuestions = false;
-        console.log(this.titleIndex);
         if (this.titleIndex === 4) {
           this.$emit("next-page");
         }
       },
-      moveSub(showQ) {
-        console.log(showQ);
-        this.showQuestions = false;
+      moveSub(subNum) {
+        this.subIndex = Number(subNum) ;
+        // console.log(showQ);
+        // this.showQuestions = false;
   
-        if (showQ === true) {
-          this.showQuestions = true;
-          this.indexQuestion++;
-        } else {
-          this.showQuestions = false;
-        }
+        // if (showQ === true) {
+        //   this.showQuestions = true;
+        //   this.indexQuestion++;
+        // } else {
+        //   this.showQuestions = false;
+        // }
   
-        if (this.titleIndex >= 0 && this.titleIndex <= 4) {
-          this.titleIndex++;
-        }
+        // if (this.titleIndex >= 0 && this.titleIndex <= 4) {
+        //   this.titleIndex++;
+        // }
       },
       closeNav() {
         this.showNav = false;

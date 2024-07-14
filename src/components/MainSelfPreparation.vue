@@ -56,7 +56,7 @@ export default {
         "- לחצ/י על תחום -",
         "התוצר הסופי של שלב ההכנה העצמית",
         "השאלות",
-        "על החונך לשאול את עצמו מספר שאלות לגבי החונך שלו",
+        "על החונך ללמוד ולהתרענן בנושאים המקצועיים של המשימה. החונך נדרש לאבחן את אתגרי המשימה איתם נדרש להתמודד הנחנך.",
         "מלל",
       ],
       arrayCircle: [
@@ -76,6 +76,7 @@ export default {
       onStart: "start",
       counter: 0,
       showAnimation: false,
+      chosenSub: -1,
     };
   },
   mounted() {
@@ -86,25 +87,37 @@ export default {
     circleBtn(event) {
       this.indexTitle = Number(event.currentTarget.id) + 1;
       this.indexInfo = Number(event.currentTarget.id) + 1;
+      this.chosenSub = event.currentTarget.id;
+      console.log(this.chosenSub);
+      //flips
+      console.log(this.chosenSub === 2);
+      if(this.chosenSub === '2') {
+        this.chosenSub = 0;
+        console.log('hi');
+      } else if(this.chosenSub === '0') {
+        this.chosenSub = 2;
+      }
+
+      this.$emit('move-to-next', this.chosenSub);
     },
     setStartAnimation() {
       this.showAnimation = true;
     },
-    prevBtn() {
-      if (this.index > 0) {
-        this.index--;
-      }
-      if (this.indexTitle > 0 && this.indexInfo) {
-        this.indexTitle--;
-        this.indexInfo--;
-      }
+    // prevBtn() {
+    //   if (this.index > 0) {
+    //     this.index--;
+    //   }
+    //   if (this.indexTitle > 0 && this.indexInfo) {
+    //     this.indexTitle--;
+    //     this.indexInfo--;
+    //   }
 
-      if (this.indexTitle === 4) {
-        this.showBtnCall = true;
-      } else {
-        this.showBtnCall = false;
-      }
-    },
+    //   if (this.indexTitle === 4) {
+    //     this.showBtnCall = true;
+    //   } else {
+    //     this.showBtnCall = false;
+    //   }
+    // },
     backToMain() {
       //cheking if user entered before
       if (!this.arrayDoneSubj[this.indexTitle - 1]) {
@@ -114,13 +127,14 @@ export default {
       }
       this.indexTitle = 0;
       this.indexInfo = 0;  
+      this.$emit('move-to-next', -1);
     },
-    src(name) {
-      return new URL(`../assets/media/BP/${name}`, import.meta.url).href;
-    },
-    openMashov() {
-      this.showMashov = true;
-    },
+    // src(name) {
+    //   return new URL(`../assets/media/BP/${name}`, import.meta.url).href;
+    // },
+    // openMashov() {
+    //   this.showMashov = true;
+    // },
   },
 };
 </script>

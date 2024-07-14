@@ -13,6 +13,7 @@
               v-for="(subj, index) in subjects[part].slice(1)"
               :key="index"
               :class="{ active: titleIndex === index }"
+              :id="index"
             >
               {{ subj }}
             </li>
