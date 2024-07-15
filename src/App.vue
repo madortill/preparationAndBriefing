@@ -119,15 +119,6 @@ body {
     z-index: 3;
 }
 
-.gray-triangle {
-    min-width: 50px;
-    max-width: 220px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-}
-
 .aboutBtn {
   position: absolute;
   border: none;

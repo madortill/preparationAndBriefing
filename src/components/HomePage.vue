@@ -1,10 +1,12 @@
 <template>
     <div id="home-page">
       <div v-if="partNum < 5" class="white-window">
-        <div class="center-text" v-if="partNum === 0">
-          <p class="explain-text pos-start-text">
-            בלומדה זו נתמקד ב-2 השלבים הראשונים ממעגל החניכה: הכנה עצמית ותדריך.
-          </p>
+        <div class="center-text  pos-start-text" v-if="partNum === 0">
+          <p class="explain-text">
+            בלומדה זו נתמקד ב-2 השלבים הראשונים ממעגל החניכה: </p>
+            <p class="bold-text">הכנה עצמית</p>
+            <p class="explain-text">ו-</p>
+            <p class="bold-text">תדריך</p>
         </div>
   
         <div class="center-text" v-if="partNum === 1 || partNum === 2">
@@ -686,8 +688,16 @@
     padding: 1.5% 7% 2%;
     color: rgb(79, 77, 77);
     margin: 0%;
+    display: inline;
   }
   
+  .bold-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: inline;
+    margin:  -5%;
+  }
+
   .pos-start-text {
     position: absolute;
     left: 50%;

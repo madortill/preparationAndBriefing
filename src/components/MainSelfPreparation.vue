@@ -3,8 +3,11 @@
     <!-- the title and info -->
     <div v-if="showAnimation" class="div-text fade-in">
       <h2 class="title-text">{{ arrayTitle[indexTitle] }}</h2>
-      <p :class="indexTitle === 4 ? 'info-div-text' : 'info-text'">
+      <p :class=" indexTitle === 2 ?'features-text' : 'info-text'">
         {{ arrayInfo[indexInfo] }}
+      </p>
+      <p class='info-text' v-show="indexInfo === 3">
+        {{ arrayInfo[indexInfo + 1] }}
       </p>
     </div>
 
@@ -29,6 +32,7 @@
     </div>
 
     <!-- the area info -->
+    <features v-if="indexTitle === 2"></features>
 
     <button
       v-if="(indexTitle === 0 && counter === 3) || indexTitle !== 0"
@@ -41,9 +45,10 @@
 </template>
 
 <script>
+import Features from './Features.vue';
 export default {
   name: "main-self-preparation",
-  components: {},
+  components: {Features},
   data() {
     return {
       arrayTitle: [
@@ -55,9 +60,9 @@ export default {
       arrayInfo: [
         "- לחצ/י על תחום -",
         "התוצר הסופי של שלב ההכנה העצמית",
-        "השאלות",
-        "על החונך ללמוד ולהתרענן בנושאים המקצועיים של המשימה. החונך נדרש לאבחן את אתגרי המשימה איתם נדרש להתמודד הנחנך.",
-        "מלל",
+        "על מנת לגשת לתדריך בצורה הטובה ביותר, עלינו לשאול את עצמנו מספר שאלות לגבי הנחנך שלנו.",
+        "על החונך ללמוד ולהתרענן בנושאים המקצועיים של המשימה.",
+        "החונך נדרש לאבחן את אתגרי המשימה איתם נדרש להתמודד הנחנך."
       ],
       arrayCircle: [
         "תכנון מתווה המשימה",
@@ -168,6 +173,15 @@ export default {
   font-size: 1.9rem;
   display: block;
   z-index: 1;
+  color: #3a3737;
+}
+
+.features-text {
+  position: absolute;
+  right: 22%;
+  width: 28%;
+  top: 45%;
+  font-size: 1.8rem;
   color: #3a3737;
 }
 
