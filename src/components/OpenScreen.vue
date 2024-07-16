@@ -43,7 +43,7 @@
     font-family: "Heebo-Bold";
     font-size: 8.5vw;
     position: absolute;
-    top: 9%;
+    top: 7%;
     /* floatAnimation 3s ease-in-out infinite; */
     animation: floatAnimation 3s ease-in-out infinite;
     width: 60%;

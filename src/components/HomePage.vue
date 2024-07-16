@@ -67,7 +67,7 @@
             <p class="explain-text">{{ explainArray[0] }}</p>
             <p class="talk-text">הכנה עצמית</p>
             <p class="explain-text">{{ explainArray[1] }}</p>
-            <p style="font-size: 2.3rem; color: #4b7189">בהצלחה!</p>
+            <p style="font-size: 2.3rem; color: #AA336A">בהצלחה!</p>
           </div>
         </div>
   
@@ -720,7 +720,8 @@
     border-radius: 30px;
     height: 6%;
     transition: background-color 0.3s ease;
-    margin: 3%;
+    margin: 2%;
+    padding: 0.5%;
   }
   .info-text-goal:hover {
     background-color: #dbdbdb;
@@ -748,10 +749,9 @@
     &:before {
       content: "";
       position: absolute;
-      width: 40%;
+      width: 34%;
       height: 2px;
       bottom: 0;
-      right: 30%;
       background-color: #ff5d8f;
       visibility: hidden;
       transform: scaleX(0);

@@ -3,11 +3,11 @@
     <!-- the title and info -->
     <div v-if="showAnimation" class="div-text fade-in">
       <h2 class="title-text">{{ arrayTitle[indexTitle] }}</h2>
-      <p :class=" indexTitle === 2 ?'features-text' : 'info-text'">
+      <p :class=" indexInfo === 3 ?'features-text' : 'info-text'">
         {{ arrayInfo[indexInfo] }}
       </p>
-      <p class='info-text' v-show="indexInfo === 3">
-        {{ arrayInfo[indexInfo + 1] }}
+      <p class='info-text' v-show="indexInfo === 5">
+        {{ arrayInfo[indexInfo - 1] }}
       </p>
     </div>
 
@@ -32,10 +32,10 @@
     </div>
 
     <!-- the area info -->
-    <features v-if="indexTitle === 2"></features>
+    <features @next-info="nextInfo" v-if="indexTitle === 2"></features>
 
     <button
-      v-if="(indexTitle === 0 && counter === 3) || indexTitle !== 0"
+      v-if="((indexTitle === 0 && counter === 3) || indexTitle !== 0)  && indexInfo !== 3"
       class="nextBtn"
       @click="backToMain"
     >
@@ -60,9 +60,10 @@ export default {
       arrayInfo: [
         "- לחצ/י על תחום -",
         "התוצר הסופי של שלב ההכנה העצמית",
+        "השאלות הן:",
         "על מנת לגשת לתדריך בצורה הטובה ביותר, עלינו לשאול את עצמנו מספר שאלות לגבי הנחנך שלנו.",
-        "על החונך ללמוד ולהתרענן בנושאים המקצועיים של המשימה.",
-        "החונך נדרש לאבחן את אתגרי המשימה איתם נדרש להתמודד הנחנך."
+        "החונך נדרש לאבחן את אתגרי המשימה איתם נדרש להתמודד הנחנך.",
+        "על החונך ללמוד ולהתרענן בנושאים המקצועיים של המשימה.",  
       ],
       arrayCircle: [
         "תכנון מתווה המשימה",
@@ -90,17 +91,19 @@ export default {
   },
   methods: {
     circleBtn(event) {
-      this.indexTitle = Number(event.currentTarget.id) + 1;
-      this.indexInfo = Number(event.currentTarget.id) + 1;
       this.chosenSub = event.currentTarget.id;
-      console.log(this.chosenSub);
+      this.indexTitle = Number(this.chosenSub) + 1;
+      
       //flips
-      console.log(this.chosenSub === 2);
       if(this.chosenSub === '2') {
         this.chosenSub = 0;
-        console.log('hi');
+      this.indexInfo = this.arrayInfo.length - 1;
+      } else if(this.chosenSub === '1') {
+        this.chosenSub = 2;
+        this.indexInfo = 3;
       } else if(this.chosenSub === '0') {
         this.chosenSub = 2;
+        this.indexInfo = 1;
       }
 
       this.$emit('move-to-next', this.chosenSub);
@@ -108,21 +111,7 @@ export default {
     setStartAnimation() {
       this.showAnimation = true;
     },
-    // prevBtn() {
-    //   if (this.index > 0) {
-    //     this.index--;
-    //   }
-    //   if (this.indexTitle > 0 && this.indexInfo) {
-    //     this.indexTitle--;
-    //     this.indexInfo--;
-    //   }
 
-    //   if (this.indexTitle === 4) {
-    //     this.showBtnCall = true;
-    //   } else {
-    //     this.showBtnCall = false;
-    //   }
-    // },
     backToMain() {
       //cheking if user entered before
       if (!this.arrayDoneSubj[this.indexTitle - 1]) {
@@ -134,12 +123,10 @@ export default {
       this.indexInfo = 0;  
       this.$emit('move-to-next', -1);
     },
-    // src(name) {
-    //   return new URL(`../assets/media/BP/${name}`, import.meta.url).href;
-    // },
-    // openMashov() {
-    //   this.showMashov = true;
-    // },
+
+    nextInfo() {
+      this.indexInfo--;
+    },
   },
 };
 </script>
