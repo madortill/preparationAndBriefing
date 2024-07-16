@@ -39,7 +39,7 @@
       class="nextBtn"
       @click="backToMain"
     >
-      המשך
+  {{ nextBtnText }}
     </button>
   </div>
 </template>
@@ -83,6 +83,7 @@ export default {
       counter: 0,
       showAnimation: false,
       chosenSub: -1,
+      nextBtnText: 'המשך',
     };
   },
   mounted() {
@@ -118,6 +119,9 @@ export default {
        
         this.arrayDoneSubj[this.indexTitle - 1] = true;
         this.counter++;
+        if (this.counter === 3) {
+          this.nextBtnText= 'הבא';
+        }
       }
       this.indexTitle = 0;
       this.indexInfo = 0;  
@@ -149,7 +153,6 @@ export default {
 .div-text {
   width: 100%;
   height: 60%;
-  /* top: 15%; */
   text-align: center;
 }
 
@@ -273,7 +276,6 @@ export default {
 .circle {
   width: 18rem;
   height: 7rem;
-  /* border-radius: 50%; */
   border-radius: 100px;
   background-color: #68d8d6;
   text-align: center;
@@ -303,7 +305,7 @@ export default {
   width: 17rem;
   height: 17rem;
   padding: 2%;
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 
 .circle-ago {
@@ -312,7 +314,6 @@ export default {
   height: 15rem;
   border-radius: 50%;
   text-align: center;
-  /* color: #ffffff; */
   color: rgb(65, 63, 63);
   font-size: 2rem;
   font-weight: 550;
@@ -321,9 +322,6 @@ export default {
   align-items: center;
   padding: 1.6%;
   transition: all 0.3s ease;
-  /* animation: floatAnimation 3s ease-in-out infinite; */
-  /* animation: downAndGrow 3s ease-in-out ; */
-
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2);
   background-color: hsl(var(--hue), 63%, 75%);
   position: fixed;

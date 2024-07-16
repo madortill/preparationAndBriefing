@@ -89,6 +89,8 @@ export default {
   background-color: hsl(var(--hue), 70%, 70%);
   border-radius: 15px;
   color: rgb(255, 255, 255);
+  text-align: center;
+
 }
 
 .list-text:hover {
