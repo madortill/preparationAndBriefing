@@ -1,7 +1,7 @@
 <template>
     <div id="information-page">
         <!-- <h4 v-if="showTitle" class="text-side-title">{{ arrayTitle[titleIndex] }}</h4> -->
-        <main-self-preparation @move-to-next="nextSub"></main-self-preparation>
+        <main-self-preparation @move-to-ques="toTheQuestion" @move-to-next="nextSub"></main-self-preparation>
 
         <!-- <feedback-call v-if="titleIndex === 1" @move-to-next="nextSub"></feedback-call>
         <locating-source v-if="titleIndex === 2" @move-to-next="nextSub"></locating-source>
@@ -35,6 +35,10 @@ export default {
         };
     },
     methods: {
+
+        toTheQuestion () {
+            this.$emit('to-question');
+        },
 
         nextSub(subNum) {
             this.$emit('move-sub', subNum);

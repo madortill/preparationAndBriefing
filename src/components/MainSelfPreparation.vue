@@ -33,6 +33,7 @@
 
     <!-- the area info -->
     <features @next-info="nextInfo" v-if="indexTitle === 2"></features>
+    <mission-planning v-if="indexTitle === 1"></mission-planning>
 
     <button
       v-if="((indexTitle === 0 && counter === 3) || indexTitle !== 0)  && indexInfo !== 3"
@@ -46,9 +47,10 @@
 
 <script>
 import Features from './Features.vue';
+import MissionPlanning from './MissionPlanning.vue';
 export default {
   name: "main-self-preparation",
-  components: {Features},
+  components: {Features, MissionPlanning},
   data() {
     return {
       arrayTitle: [
@@ -59,7 +61,7 @@ export default {
       ],
       arrayInfo: [
         "- לחצ/י על תחום -",
-        "התוצר הסופי של שלב ההכנה העצמית",
+        "במהלך התכנון עלינו לבצע מספר פעולות:",
         "השאלות הן:",
         "על מנת לגשת לתדריך בצורה הטובה ביותר, עלינו לשאול את עצמנו מספר שאלות לגבי הנחנך שלנו.",
         "החונך נדרש לאבחן את אתגרי המשימה איתם נדרש להתמודד הנחנך.",
@@ -82,17 +84,20 @@ export default {
       onStart: "start",
       counter: 0,
       showAnimation: false,
+      ableBtns: false,
       chosenSub: -1,
       nextBtnText: 'המשך',
     };
   },
   mounted() {
     // Call a method to change data after 3 seconds
-    setTimeout(this.setStartAnimation, 3000);
+    setTimeout(this.setStartAnimation, 1500);
   },
   methods: {
     circleBtn(event) {
-      this.chosenSub = event.currentTarget.id;
+      if(this.ableBtns) {
+
+        this.chosenSub = event.currentTarget.id;
       this.indexTitle = Number(this.chosenSub) + 1;
       
       //flips
@@ -108,24 +113,33 @@ export default {
       }
 
       this.$emit('move-to-next', this.chosenSub);
+      }
     },
     setStartAnimation() {
       this.showAnimation = true;
+      setTimeout(()=> {
+        this.ableBtns = true;
+      }, 3000);
     },
 
     backToMain() {
+      if(this.indexTitle === 0) {
+        this.$emit('move-to-ques');
+      } else {
+
       //cheking if user entered before
       if (!this.arrayDoneSubj[this.indexTitle - 1]) {
        
-        this.arrayDoneSubj[this.indexTitle - 1] = true;
-        this.counter++;
-        if (this.counter === 3) {
-          this.nextBtnText= 'הבא';
-        }
+       this.arrayDoneSubj[this.indexTitle - 1] = true;
+       this.counter++;
+       if (this.counter === 3) {
+         this.nextBtnText= 'הבא';
+       }
+     }
+     this.indexTitle = 0;
+     this.indexInfo = 0;  
+     this.$emit('move-to-next', -1);
       }
-      this.indexTitle = 0;
-      this.indexInfo = 0;  
-      this.$emit('move-to-next', -1);
     },
 
     nextInfo() {
