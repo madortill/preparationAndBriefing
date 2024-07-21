@@ -84,6 +84,10 @@ export default {
     font-family: 'Heebo';
 }
 
+html {
+    /* font-size: calc(14px + 0.4vw) */
+}
+
 body {
     margin: 0;
     direction: rtl;

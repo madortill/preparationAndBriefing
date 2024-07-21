@@ -1,7 +1,11 @@
 <template>
   <div id="home-page">
-    <div v-if="partNum < 6" class="white-window">
-      <div class="center-text pos-start-text" v-if="partNum === 0">
+    <div
+      v-if="partNum < 6"
+      class="white-window"
+      :class="partNum === 4 || partNum === 5 ? 'explain-page center-text' : ''"
+    >
+    <div class="center-text pos-start-text" v-if="partNum === 0">
         <p class="explain-text">
           בלומדה זו נתמקד ב-2 השלבים הראשונים ממעגל החניכה:
         </p>
@@ -73,39 +77,30 @@
       </div>
 
       <div v-if="partNum === 4">
-        <div class="explain-page center-text">
-          <p class="explain-text">{{ explainArray[0] }}</p>
-          <p class="talk-text">הכנה עצמית</p>
-          <p class="explain-text">{{ explainArray[1] }}</p>
-          <p style="font-size: 2.3rem; color: #aa336a">בהצלחה!</p>
-        </div>
+        <p class="explain-text">{{ explainArray[0] }}</p>
+        <p class="talk-text">הכנה עצמית</p>
+        <p class="explain-text">{{ explainArray[1] }}</p>
+        <p style="font-size: 2.3rem; color: #aa336a">בהצלחה!</p>
       </div>
 
-      <div v-if="partNum === 5">
-        <div class="explain-page center-text">
-          <p class="explain-text">קודם כל -</p>
-          <p class="bold-text">מהי הכנה עצמית?</p>
-          <br /><br /><br />
+      <div v-if="partNum === 5" >
+        <p class="explain-text">קודם כל -</p>
+        <p class="bold-text" >מהי הכנה עצמית?</p>
+        <br /><br /><br />
 
-          <div class="the-type-writer type-writer">
-            <p
-              v-for="(text, index) in arrayExplain"
-              :key="text"
-              :style="{
-                '--delay': `${index * 3.2}s`,
-                '--width': `${text.length}ch`,
-                'font-size': '1.6rem',
-              }"
-              class="explain-text"
-            >
-              {{ text }}
-            </p>
-          </div>
-
-          <!-- <p class="explain-text">
-            השלב הראשון במעגל החניכה, בו החונך מתכונן לתדריך. שלב זה שייך רק
-            לחונך והוא מבצע אותו לבד.
-          </p> -->
+        <div class="the-type-writer type-writer">
+          <p
+            v-for="(text, index) in arrayExplain"
+            :key="text"
+            :style="{
+              '--delay': `${index * 3.2}s`,
+              '--width': `${text.length}ch`,
+              'font-size': '1.6rem',
+            }"
+            class="explain-text"
+          >
+            {{ text }}
+          </p>
         </div>
       </div>
 
@@ -234,8 +229,8 @@ export default {
   background-color: #f2f2f2;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  position: relative;
+  /* display: flex; */
+  position: absolute;
   justify-content: center;
 }
 
@@ -243,7 +238,7 @@ export default {
 
 .type-writer > p {
   animation: typeWrite 2s var(--delay) steps(44) normal both,
-    blink 400ms var(--delay) steps(45) 6;
+    blink 400ms var(--delay) steps(45) 5;
 }
 
 .the-type-writer > p {
@@ -261,10 +256,10 @@ export default {
   position: relative;
   height: fit-content;
   flex-direction: column;
-  text-align: center;
+  /* text-align: center; */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
 }
@@ -565,8 +560,7 @@ export default {
 }
 
 .explain-page {
-  position: absolute;
-  top: 10%;
+  position: relative;
 }
 
 .finale-exe {
@@ -772,12 +766,12 @@ export default {
   position: absolute;
   width: 40%;
   height: 70%;
-  left: 50%; 
-  bottom: 20%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   background: #fff;
   border-radius: 3rem;
   box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
-  transform: translateX(-50%); 
 }
 
 .hide-bg {
@@ -791,9 +785,9 @@ export default {
 
 .explain-text {
   font-size: 2.1rem;
-  padding: 1.5% 7% 2%;
+  /* padding: 1.5% 7% 2%; */
   color: rgb(79, 77, 77);
-  margin: 0%;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-content: center;
