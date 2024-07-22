@@ -11,7 +11,7 @@
   
 
 <script>
-// import Draggable from 'vuedraggable';
+import MultipleQuestion from "./MultipleQuestion.vue";
 
 
 
@@ -19,7 +19,7 @@ export default {
     name: 'quick-questions',
     props: ['indexQuestion'],
     components: {
-
+        MultipleQuestion
     },
     data() {
         return {
@@ -30,9 +30,9 @@ export default {
                     Qtype: 0,
                     title: "באילו תחומים ניגע בזמן ההכנה עצמית לתדריך",
                     ans1: "למידת מאפייני הנחנך",
-                    ans2: "בחלון העיוור",
-                    ans3: "בחלון הנסתר",
-                    ans4: "בחלון הלא מודע",
+                    ans2: "הכנות לוגיסטיות סופיות",
+                    ans3: "קביעת מיקום המתצפת",
+                    ans4: "שיחת חולין עם הנחנך",
                     ans5: "סגירה מקצועית של החומר",
                     ans6: "תכנון מתווה המשימה",
                     correctAnswer: [1, 5,6],
@@ -132,18 +132,18 @@ export default {
     },
     methods: {
         updateIndex() {
-            if (this.indexQ < this[`questions${this.indexQuestion}`].length - 1) {
-                this.indexQ++;
-            } else {
-                this.indexQ = 0;
+            // if (this.indexQ < this[`questions${this.indexQuestion}`].length - 1) {
+            //     this.indexQ++;
+            // } else {
+            //     this.indexQ = 0;
                 this.$emit('next-sub');
-            }
+            // }
         }
     },
     computed: {
         questionToPass() {
             return (
-                this[`questions${this.indexQuestion}`][this.indexQ]
+                this[`questions${this.indexQuestion + 1}`][this.indexQ]
             )
         }
     }

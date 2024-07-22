@@ -91,7 +91,7 @@ export default {
   },
   mounted() {
     // Call a method to change data after 3 seconds
-    setTimeout(this.setStartAnimation, 1500);
+    setTimeout(this.setStartAnimation, 2500);
   },
   methods: {
     circleBtn(event) {
@@ -363,11 +363,11 @@ export default {
 }
 
 .floatAnimation {
-  animation: floatAnimation 3s ease-in-out infinite;
+  animation: floatAnimation 2s linear infinite;
 }
 
 .downAndGrow {
-  animation: downAndGrow 3s ease-in-out;
+  animation: downAndGrow 2.5s ease-in-out;
 }
 
 @keyframes downAndGrow {
@@ -382,6 +382,18 @@ export default {
     font-size: 2rem;
     width: 15rem;
     height: 15rem;
+    bottom: 25%;
+  }
+}
+
+@keyframes floatAnimation {
+  0% {
+    bottom: 25%;
+  }
+  50% {
+    bottom: 27%;
+  }
+  100% {
     bottom: 25%;
   }
 }

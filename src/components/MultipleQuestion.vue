@@ -8,11 +8,15 @@
                     }}</button>
                     <button id="2" ref="2" class="pulse-button-hover">{{ this.questionInfo.ans2
                     }}</button>
+                     <button id="3" ref="3" class="pulse-button-hover">{{ this.questionInfo.ans3
+                    }}</button>
                 </div>
                 <div class="row">
-                    <button id="3" ref="3" class="pulse-button-hover">{{ this.questionInfo.ans3
-                    }}</button>
                     <button id="4" ref="4" class="pulse-button-hover">{{ this.questionInfo.ans4
+                    }}</button>
+                     <button id="5" ref="5" class="pulse-button-hover">{{ this.questionInfo.ans5
+                    }}</button>
+                    <button id="6" ref="6" class="pulse-button-hover">{{ this.questionInfo.ans6
                     }}</button>
                 </div>
             </div>
@@ -25,13 +29,19 @@
 export default {
     name: 'multiple-question',
     props: ['questionInfo'],
+    data() {
+      return {
+        arrayChosenCorrect: ['', '', ''],
+      };
+    },
     methods: {
         checkAnswer(event) {
             if (event.target.classList.contains('pulse-button-hover')) {
-                if (String(event.target.id) === String(this.questionInfo.correctAnswer)) {
+                if ( this.isInTheArray(this.questionInfo.correctAnswer, event.target.id)) {
                     event.target.classList.add("correct");
+                    if(this.getNumCorrect() === 3) {
                         setTimeout(() => {
-                            for (let i = 1; i <= 4; i++) {
+                            for (let i = 1; i <= 6; i++) {
                                 if (this.$refs[i].classList.contains('correct')) {
                                     this.$refs[i].classList.remove('correct');
                                 }
@@ -41,11 +51,33 @@ export default {
                             }
                             this.$emit('next-question')
                         }, 1500);
+                    }
+                       
                 } else {
                     event.target.classList.add("wrong");
                 }
             }
         },
+        isInTheArray (arr, currentId) {
+           
+            for (let i = 0 ; i < arr.length ; i++) {
+                if(String(arr[i]) === String(currentId)) {
+                    this.arrayChosenCorrect[i] = true;
+                    return true;
+
+                }
+            }
+            return false;
+        },
+        getNumCorrect() {
+            let counter = 0 ;
+            for (let i = 0 ; i < 3 ; i++) {
+                if(this.arrayChosenCorrect[i]) {
+                    counter++;
+                }
+            }
+            return counter;
+        }
     },
 }
 </script>
@@ -66,7 +98,7 @@ export default {
 
 .row {
     display: flex;
-    margin:  8% 5% 15% 5%;
+    margin:  5% 0% 5% 0%;
     justify-content: space-between;
 }
 
@@ -79,7 +111,7 @@ export default {
 }
 
 .pulse-button-hover {
-    background-color: #11a8e3;
+    background-color: #ff87ab;
     margin: 0 1rem;
     cursor: pointer;
     border: none;
