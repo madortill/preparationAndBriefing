@@ -1,6 +1,6 @@
 <template>
   <div id="home-page">
-    <white-window @hideWW="hidwWhiteWindow" v-if="showWhiteWindow"></white-window>
+    <white-window :subjNum="subjNum" @hideWW="hidwWhiteWindow" v-if="showWhiteWindow"></white-window>
     <div v-if="!showWhiteWindow">
       <div v-if="!showQuestions">
         <navbar v-if="showNav" :titleIndex="subIndex"></navbar>
@@ -38,13 +38,14 @@ export default {
 
   data() {
     return {
-      showWhiteWindow: false,
+      showWhiteWindow: true,
       index: 0,
       titleIndex: 0,
       showNav: true,
-      showQuestions: true,
+      showQuestions: false,
       indexQuestion: 0,
       subIndex: -1,
+      subjNum: 0,
     };
   },
 
@@ -55,6 +56,7 @@ export default {
     nextSub() {
       this.showQuestions = false;
       this.showWhiteWindow = true;
+      this.subjNum++;
       // if (this.titleIndex === 5) {
       //   this.$emit("next-page");
       // }

@@ -1,135 +1,141 @@
 <template>
-    <div id="white-window" class="white-window"
-    :class="partNum === 4 || partNum === 5 ? 'explain-page center-text' : ''">
-      
+  <div
+    id="white-window"
+    class="white-window"
+    :class="partNum === 4 || partNum === 5 ? 'explain-page center-text' : ''"
+  >
     <div class="center-text pos-start-text" v-if="partNum === 0">
-        <p class="explain-text">
-          בלומדה זו נתמקד ב-2 השלבים הראשונים ממעגל החניכה:
-        </p>
-        <p class="bold-text">הכנה עצמית</p>
-        <p class="explain-text">ו-</p>
-        <p class="bold-text">תדריך</p>
+      <p class="explain-text">
+        בלומדה זו נתמקד ב-2 השלבים הראשונים ממעגל החניכה:
+      </p>
+      <p class="bold-text">הכנה עצמית</p>
+      <p class="explain-text">ו-</p>
+      <p class="bold-text">תדריך</p>
+    </div>
+
+    <div class="center-text" v-if="partNum === 1 || partNum === 2">
+      <div>
+        <img src="../../src/assets/media/bell.svg" class="bell" alt="bell" />
+        <p class="explain-text reminder-text">תזכורת למעגל החניכה:</p>
       </div>
 
-      <div class="center-text" v-if="partNum === 1 || partNum === 2">
-        <div>
-          <img src="../../src/assets/media/bell.svg" class="bell" alt="bell" />
-          <p class="explain-text reminder-text">תזכורת למעגל החניכה:</p>
+      <!-- the circles -->
+      <div class="circle-container">
+        <div
+          v-for="(item, index) in arrayAgo"
+          :key="index"
+          class="circle"
+          :class="getCircleClass(index)"
+        >
+          {{ arrayAgo[index] }}
         </div>
+      </div>
+      <!-- the arrows -->
+      <img
+        v-for="i in 5"
+        :key="i"
+        class="arrow"
+        :class="getArrowClass(i)"
+        src="../../src/assets/media/arrow.svg"
+      />
 
-        <!-- the circles -->
-        <div class="circle-container">
-          <div
-            v-for="(item, index) in arrayAgo"
-            :key="index"
-            class="circle"
-            :class="getCircleClass(index)"
+      <!-- the openning window -->
+      <div v-if="partNum === 2">
+        <!-- the blur bg -->
+        <div class="hide-bg"></div>
+        <div class="jumping-window">
+          <p class="adjust">
+            שלבי הכנה עצמאית ועיבוד הם שלבים עצמאים של החונך.
+          </p>
+          <button
+            id="expBtn"
+            style="height: 30%"
+            class="startBtn posCenterBtn"
+            @click="nextPart"
           >
-            {{ arrayAgo[index] }}
-          </div>
-        </div>
-        <!-- the arrows -->
-        <img
-          v-for="i in 5"
-          :key="i"
-          class="arrow"
-          :class="getArrowClass(i)"
-          src="../../src/assets/media/arrow.svg"
-        />
-
-        <!-- the openning window -->
-        <div v-if="partNum === 2">
-          <!-- the blur bg -->
-          <div class="hide-bg"></div>
-          <div class="jumping-window">
-            <p class="adjust">
-              שלבי הכנה עצמאית ועיבוד הם שלבים עצמאים של החונך.
-            </p>
-            <button
-              id="expBtn"
-              style="height: 30%"
-              class="startBtn posCenterBtn"
-              @click="nextPart"
-            >
-              הבא
-            </button>
-          </div>
+            הבא
+          </button>
         </div>
       </div>
+    </div>
 
-      <div v-if="partNum === 3" class="finale-exe">
+    <div v-if="partNum === 3" class="finale-exe">
+      <p
+        v-for="(text, index) in array1"
+        :key="text"
+        :class="{
+          'talk-text': index === 0 || index === 2,
+          'info-text-goal': index !== 0 && index !== 2,
+        }"
+        :style="{
+          'font-size': index === 0 || index === 2 ? '3rem' : '1.6rem',
+        }"
+      >
+        {{ text }}
+      </p>
+    </div>
+
+    <div style="position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%); width:100%;" v-if="partNum === 4">
+      <p class="explain-text">{{ openningSubjArray[subjNum][0] }}</p>
+      <p class="talk-text">{{ openningSubjArray[subjNum][1] }}</p>
+      <p class="explain-text">כדי להמשיך בלמידת החומר לחצ\י הבא</p>
+      <p style="font-size: 2.3rem; color: #aa336a">בהצלחה!</p>
+    </div>
+
+    <div  v-if="partNum === 5">
+      <p class="explain-text">קודם כל -</p>
+      <p class="bold-text">{{arrayExplain[subjNum][0]}}</p>
+      <br /><br /><br />
+
+      <div class="the-type-writer type-writer">
         <p
-          v-for="(text, index) in array1"
+          v-for="(text, index) in arrayExplain[subjNum].slice(1)"
           :key="text"
-          :class="{
-            'talk-text': index === 0 || index === 2,
-            'info-text-goal': index !== 0 && index !== 2,
-          }"
           :style="{
-            'font-size': index === 0 || index === 2 ? '3rem' : '1.6rem',
+            '--delay': `${index * 3.2}s`,
+            '--width': `${text.length}ch`,
+            'font-size': '1.6rem',
           }"
+          class="explain-text"
         >
           {{ text }}
         </p>
       </div>
-
-      <div v-if="partNum === 4">
-        <p class="explain-text">{{ explainArray[0] }}</p>
-        <p class="talk-text">הכנה עצמית</p>
-        <p class="explain-text">{{ explainArray[1] }}</p>
-        <p style="font-size: 2.3rem; color: #aa336a">בהצלחה!</p>
-      </div>
-
-      <div v-if="partNum === 5" >
-        <p class="explain-text">קודם כל -</p>
-        <p class="bold-text" >מהי הכנה עצמית?</p>
-        <br /><br /><br />
-
-        <div class="the-type-writer type-writer">
-          <p
-            v-for="(text, index) in arrayExplain"
-            :key="text"
-            :style="{
-              '--delay': `${index * 3.2}s`,
-              '--width': `${text.length}ch`,
-              'font-size': '1.6rem',
-            }"
-            class="explain-text"
-          >
-            {{ text }}
-          </p>
-        </div>
-      </div>
-
-      <button
-        v-if="partNum !== 2"
-        id="expBtn"
-        class="startBtn"
-        :class="partNum === 1 || partNum === 3 ? 'posLeftBtn' : 'posCenterBtn'"
-        @click="nextPart"
-      >
-        הבא
-      </button>
-  
-
     </div>
+
+    <button
+      v-if="partNum !== 2"
+      id="expBtn"
+      class="startBtn"
+      :class="partNum === 1 || partNum === 3 ? 'posLeftBtn' : 'posCenterBtn'"
+      @click="nextPart"
+    >
+      הבא
+    </button>
+  </div>
 </template>
 
 <script>
 export default {
   name: "white-window",
-  components: {
-
-  },
-
+  components: {},
+  props: ["subjNum"],
   data() {
     return {
       partNum: 0,
-      index: 0,
+      // index: 0,
       titleIndex: 0,
       arrayExplain: [
-        "השלב הראשון במעגל החניכה, בו החונך מתכונן לתדריך. ",
-        "שלב זה שייך רק לחונך והוא מבצע אותו לבד.",
+        [
+          "מהי הכנה עצמית?",
+          "השלב הראשון במעגל החניכה, בו החונך מתכונן לתדריך. ",
+          "שלב זה שייך רק לחונך והוא מבצע אותו לבד.",
+        ],
+        [
+          "מהו תדריך?",
+          "השלב הבא אחרי הכנה עצמית, בשלב זה החונך מתדרך ",
+          "את הנחנך לקראת התצפית (השלב הבא)."
+        ],
       ],
       array1: [
         "מטרת על",
@@ -140,18 +146,26 @@ export default {
         "החניך יסביר את מטרות התדריך, עקרונותיו ודגשיו.",
         "החניך יתרגל תדריך לקראת תצפית.",
       ],
-      explainArray: [
-        "נתחיל בנושא הראשון במעגל החניכה",
-        "אם הינך בטוח/ה שרוצה להמשיך בלמידת החומר לחצ/י המשך",
+      // explainArray: [
+      //   "נתחיל בנושא הראשון במעגל החניכה",
+      //   "אם הינך בטוח/ה שרוצה להמשיך בלמידת החומר לחצ/י המשך",
+      // ],
+      openningSubjArray: [
+        ["נתחיל בנושא הראשון במעגל החניכה", "הכנה עצמית"],
+        ["עכשיו נעבור לנושא השני של הלומדה", "תדריך"],
       ],
       arrayAgo: ["משוב", "עיבוד", "תצפית", "תדריך", "הכנה עצמית"],
     };
   },
-
+  mounted() {
+    if (this.subjNum === 1) {
+      this.partNum = 4;
+    }
+  },
   methods: {
     nextPart() {
-      if(this.partNum === 5) {
-        this.$emit('hideWW');
+      if (this.partNum === 5) {
+        this.$emit("hideWW");
       }
       this.partNum++;
     },
@@ -165,9 +179,7 @@ export default {
 };
 </script>
 
-
 <style scoped>
-
 /* typewriter */
 
 .type-writer > p {
@@ -224,7 +236,8 @@ export default {
   z-index: 2;
   width: 100%;
   position: absolute;
-  right: -5%;
+  right: 3%;
+  top:2%;
 }
 
 .jumping-window {

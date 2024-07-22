@@ -119,7 +119,7 @@ export default {
       this.showAnimation = true;
       setTimeout(()=> {
         this.ableBtns = true;
-      }, 3000);
+      }, 1000);
     },
 
     backToMain() {

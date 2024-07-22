@@ -39,7 +39,7 @@ export default {
     },
     data() {
         return {
-            page: 1 ,
+            page: 0 ,
             showAbout: false,
             clickBtn: 0,
         };
