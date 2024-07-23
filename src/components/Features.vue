@@ -13,7 +13,7 @@
           v-for="(item, index) in correctArray"
           :key="index"
           class="list-text"
-          :style="`--hue: ${index * 8 + 690}deg`"
+          :style="`--hue: ${index * 14 + -35}deg`"
         >
           {{ item }}
         </li>

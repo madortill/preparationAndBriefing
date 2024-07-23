@@ -104,10 +104,10 @@
     </div>
 
     <button
-      v-if="partNum !== 2"
+      v-if="partNum !== 2 && showNextBtn"
       id="expBtn"
       class="startBtn"
-      :class="partNum === 1 || partNum === 3 ? 'posLeftBtn' : 'posCenterBtn'"
+      :class="partNum === 1 || partNum === 3 ? 'posLeftBtn' : 'posCenterBtn' + ' ' + (partNum === 5 && showNextBtn ? 'fade-in' : '')"
       @click="nextPart"
     >
       הבא
@@ -123,8 +123,8 @@ export default {
   data() {
     return {
       partNum: 0,
-      // index: 0,
       titleIndex: 0,
+      showNextBtn: true,
       arrayExplain: [
         [
           "מהי הכנה עצמית?",
@@ -146,10 +146,6 @@ export default {
         "החניך יסביר את מטרות התדריך, עקרונותיו ודגשיו.",
         "החניך יתרגל תדריך לקראת תצפית.",
       ],
-      // explainArray: [
-      //   "נתחיל בנושא הראשון במעגל החניכה",
-      //   "אם הינך בטוח/ה שרוצה להמשיך בלמידת החומר לחצ/י המשך",
-      // ],
       openningSubjArray: [
         ["נתחיל בנושא הראשון במעגל החניכה", "הכנה עצמית"],
         ["עכשיו נעבור לנושא השני של הלומדה", "תדריך"],
@@ -164,7 +160,14 @@ export default {
   },
   methods: {
     nextPart() {
-      if (this.partNum === 5) {
+    if (this.partNum === 4) {
+      this.showNextBtn = false;
+     let timer = setTimeout(()=> {
+        this.showNextBtn = true;
+        clearTimeout(timer);
+      }, 6000);
+      
+    } else if (this.partNum === 5) {
         this.$emit("hideWW");
       }
       this.partNum++;
@@ -689,6 +692,7 @@ export default {
   bottom: 5%;
   left: 5%;
 }
+
 .info-text-goal {
   background-color: none;
   border-radius: 30px;
@@ -697,8 +701,22 @@ export default {
   margin: 2%;
   padding: 0.5%;
 }
+
 .info-text-goal:hover {
   background-color: #dbdbdb;
+}
+
+.fade-in {
+  animation: fade 2s linear; /* Animation name, duration, timing function */
+}
+
+@keyframes fade {
+  from {
+    opacity: 0; /* Start with opacity 0 (fully transparent) */
+  }
+  to {
+    opacity: 1; /* End with opacity 1 (fully opaque) */
+  }
 }
 
 .talk-text {

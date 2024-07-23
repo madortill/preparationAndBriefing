@@ -3,10 +3,10 @@
     <!-- the title and info -->
     <div v-if="showAnimation" class="div-text fade-in">
       <h2 class="title-text">{{ arrayTitle[indexTitle] }}</h2>
-      <p :class=" indexInfo === 3 ?'features-text' : 'info-text'">
+      <p :class="indexInfo === 3 ? 'features-text' : 'info-text'">
         {{ arrayInfo[indexInfo] }}
       </p>
-      <p class='info-text' v-show="indexInfo === 5">
+      <p class="info-text" v-show="indexInfo === 5">
         {{ arrayInfo[indexInfo - 1] }}
       </p>
     </div>
@@ -36,28 +36,31 @@
     <mission-planning v-if="indexTitle === 1"></mission-planning>
 
     <button
-      v-if="((indexTitle === 0 && counter === 3) || indexTitle !== 0)  && indexInfo !== 3"
+      v-if="
+        ((indexTitle === 0 && counter === 3) || indexTitle !== 0) &&
+        indexInfo !== 3
+      "
       class="nextBtn"
       @click="backToMain"
     >
-  {{ nextBtnText }}
+      {{ nextBtnText }}
     </button>
   </div>
 </template>
 
 <script>
-import Features from './Features.vue';
-import MissionPlanning from './MissionPlanning.vue';
+import Features from "./Features.vue";
+import MissionPlanning from "./MissionPlanning.vue";
 export default {
   name: "main-self-preparation",
-  components: {Features, MissionPlanning},
+  components: { Features, MissionPlanning },
   data() {
     return {
       arrayTitle: [
         "להכנה עצמית שלושה תחומים:",
         "תכנון מתווה המשימה",
         "למידת מאפייני הנחנך",
-        '"סגירה" מקצועית של החומר',   
+        '"סגירה" מקצועית של החומר',
       ],
       arrayInfo: [
         "- לחצ/י על תחום -",
@@ -65,7 +68,7 @@ export default {
         "השאלות הן:",
         "על מנת לגשת לתדריך בצורה הטובה ביותר, עלינו לשאול את עצמנו מספר שאלות לגבי הנחנך שלנו.",
         "החונך נדרש לאבחן את אתגרי המשימה איתם נדרש להתמודד הנחנך.",
-        "על החונך ללמוד ולהתרענן בנושאים המקצועיים של המשימה.",  
+        "על החונך ללמוד ולהתרענן בנושאים המקצועיים של המשימה.",
       ],
       arrayCircle: [
         "תכנון מתווה המשימה",
@@ -86,7 +89,7 @@ export default {
       showAnimation: false,
       ableBtns: false,
       chosenSub: -1,
-      nextBtnText: 'המשך',
+      nextBtnText: "המשך",
     };
   },
   mounted() {
@@ -95,50 +98,47 @@ export default {
   },
   methods: {
     circleBtn(event) {
-      if(this.ableBtns) {
-
+      if (this.ableBtns) {
         this.chosenSub = event.currentTarget.id;
-      this.indexTitle = Number(this.chosenSub) + 1;
-      
-      //flips
-      if(this.chosenSub === '2') {
-        this.chosenSub = 0;
-      this.indexInfo = this.arrayInfo.length - 1;
-      } else if(this.chosenSub === '1') {
-        this.chosenSub = 2;
-        this.indexInfo = 3;
-      } else if(this.chosenSub === '0') {
-        this.chosenSub = 2;
-        this.indexInfo = 1;
-      }
+        this.indexTitle = Number(this.chosenSub) + 1;
 
-      this.$emit('move-to-next', this.chosenSub);
+        //flips
+        if (this.chosenSub === "2") {
+          this.chosenSub = 0;
+          this.indexInfo = this.arrayInfo.length - 1;
+        } else if (this.chosenSub === "1") {
+          this.chosenSub = 1;
+          this.indexInfo = 3;
+        } else if (this.chosenSub === "0") {
+          this.chosenSub = 2;
+          this.indexInfo = 1;
+        }
+
+        this.$emit("move-to-next", this.chosenSub);
       }
     },
     setStartAnimation() {
       this.showAnimation = true;
-      setTimeout(()=> {
+      setTimeout(() => {
         this.ableBtns = true;
       }, 1000);
     },
 
     backToMain() {
-      if(this.indexTitle === 0) {
-        this.$emit('move-to-ques');
+      if (this.indexTitle === 0) {
+        this.$emit("move-to-ques");
       } else {
-
-      //cheking if user entered before
-      if (!this.arrayDoneSubj[this.indexTitle - 1]) {
-       
-       this.arrayDoneSubj[this.indexTitle - 1] = true;
-       this.counter++;
-       if (this.counter === 3) {
-         this.nextBtnText= 'הבא';
-       }
-     }
-     this.indexTitle = 0;
-     this.indexInfo = 0;  
-     this.$emit('move-to-next', -1);
+        //cheking if user entered before
+        if (!this.arrayDoneSubj[this.indexTitle - 1]) {
+          this.arrayDoneSubj[this.indexTitle - 1] = true;
+          this.counter++;
+          if (this.counter === 3) {
+            this.nextBtnText = "הבא";
+          }
+        }
+        this.indexTitle = 0;
+        this.indexInfo = 0;
+        this.$emit("move-to-next", -1);
       }
     },
 
@@ -388,13 +388,15 @@ export default {
 
 @keyframes floatAnimation {
   0% {
-    bottom: 25%;
+    transform: translateY(0);
   }
+
   50% {
-    bottom: 27%;
+    transform: translateY(-8px);
   }
+
   100% {
-    bottom: 25%;
+    transform: translateY(0);
   }
 }
 .disabled {

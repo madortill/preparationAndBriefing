@@ -3,12 +3,13 @@
     <white-window :subjNum="subjNum" @hideWW="hidwWhiteWindow" v-if="showWhiteWindow"></white-window>
     <div v-if="!showWhiteWindow">
       <div v-if="!showQuestions">
-        <navbar v-if="showNav" :titleIndex="subIndex"></navbar>
+        <navbar v-if="showNav" :titleIndex="subIndex" :part="subjNum"></navbar>
         <information-page
           :titleIndex="titleIndex"
           @move-sub="moveSub"
           @close-nav="closeNav"
           @to-question="showQuestion"
+          :sectionNum="subjNum"
         ></information-page>
       </div>
       <div v-if="showQuestions">
@@ -38,14 +39,14 @@ export default {
 
   data() {
     return {
-      showWhiteWindow: true,
+      showWhiteWindow: false,
       index: 0,
       titleIndex: 0,
       showNav: true,
       showQuestions: false,
       indexQuestion: 0,
-      subIndex: -1,
-      subjNum: 0,
+      subIndex: 1,
+      subjNum: 1,
     };
   },
 
@@ -57,6 +58,7 @@ export default {
       this.showQuestions = false;
       this.showWhiteWindow = true;
       this.subjNum++;
+      this.subIndex = 0;
       // if (this.titleIndex === 5) {
       //   this.$emit("next-page");
       // }

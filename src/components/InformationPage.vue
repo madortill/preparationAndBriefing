@@ -1,8 +1,8 @@
 <template>
     <div id="information-page">
         <!-- <h4 v-if="showTitle" class="text-side-title">{{ arrayTitle[titleIndex] }}</h4> -->
-        <main-self-preparation @move-to-ques="toTheQuestion" @move-to-next="nextSub"></main-self-preparation>
-
+        <main-self-preparation @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 0"></main-self-preparation>
+        <targets @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 1"></targets>
         <!-- <feedback-call v-if="titleIndex === 1" @move-to-next="nextSub"></feedback-call>
         <locating-source v-if="titleIndex === 2" @move-to-next="nextSub"></locating-source>
         <objections-feedback v-if="titleIndex === 3" @move-to-next="nextSub"></objections-feedback> -->
@@ -14,18 +14,19 @@
 
 <script>
 import MainSelfPreparation from '@/components/MainSelfPreparation.vue'; 
+import Targets from './Targets.vue';
 
 
 export default {
     name: 'information-page',
     components: {
-        MainSelfPreparation,
+        MainSelfPreparation, 
+        Targets,
     },
-    props: ["titleIndex"],
+    props: ["titleIndex", 'sectionNum'],
     data() {
         return {
             showTitle: true,
-
             arrayTitle: [
                 'עקרונות יסוד',
                 'שיחת משוב',
@@ -43,6 +44,10 @@ export default {
         nextSub(subNum) {
             this.$emit('move-sub', subNum);
         },
+        nextSection() {
+            this.sectionNum++;
+        },
+    
     },
 }
 

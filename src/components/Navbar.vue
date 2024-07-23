@@ -27,10 +27,9 @@
   <script>
   export default {
     name: "navbar",
-    props: ["titleIndex"],
+    props: ["titleIndex", 'part'],
     data() {
       return {
-        part: 0,
         subjects: [
           ["הכנה עצמית", 'סגירת" החומר"', "מאפייני הנחנך", "תכנון המשימה"],
           ["תדריך", "מטרות", "מבנה עקרוני", "עקרונות לביצוע", "דגשים"],
@@ -44,6 +43,7 @@
           this.$emit("chosen-page", this.titleIndex);
         }
       },
+      
     },
   };
   </script>
