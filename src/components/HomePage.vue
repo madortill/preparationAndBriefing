@@ -45,7 +45,7 @@ export default {
       showNav: true,
       showQuestions: false,
       indexQuestion: 0,
-      subIndex: 1,
+      subIndex: 0,
       subjNum: 1,
     };
   },

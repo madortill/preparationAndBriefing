@@ -169,6 +169,14 @@ export default {
 
 .shoot1 {
     animation: shoot0 2s ease-in-out forwards;
+} 
+
+.shoot2 {
+    animation: shoot0 2s ease-in-out forwards;
+}
+
+.shoot3 {
+    animation: shoot0 2s ease-in-out forwards;
 }
 @keyframes shoot0 {
     from {
@@ -177,8 +185,8 @@ export default {
     to {
         bottom: 10%;
     }
-    
 } 
+
 @keyframes shoot1 {
     from {
         bottom: -10%;
@@ -186,6 +194,24 @@ export default {
     to {
         bottom: 10%;
     }
-    
+}
+
+@keyframes shoot2 {
+    from {
+        bottom: -10%;
+    }
+    to {
+        bottom: 10%;
+    }  
+}
+
+
+@keyframes shoot3 {
+    from {
+        bottom: -10%;
+    }
+    to {
+        bottom: 10%;
+    }  
 }
 </style>
