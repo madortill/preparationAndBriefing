@@ -1,5 +1,5 @@
 <template>
-    <div id="targets" @click="showNextTarget">
+    <div id="targets">
         <!-- Title and information -->
         <div class="div-text">
             <h2 class="title-text">מטרות</h2>
@@ -7,7 +7,7 @@
                 לתדריך קיימות מספר מטרות:
             </p>
             <p class="info-text comment-text">
-                - לחצ/י על המסך -
+                - לחצ/י על המטרה -
             </p>
         </div>
 
@@ -22,7 +22,15 @@
         <img  v-for="(i, index) in 4" :key="index" src="../../src/assets/media/arrowTarget.svg" alt="arrow" class="arrow" :class="['arrow' + index , targetNum >= index ? `shoot${index}`: '' ]"/>
 
         <!-- Static image -->
-        <img src="../../src/assets/media/target.png" alt="target" class="target"/>
+        <img src="../../src/assets/media/target.png" alt="target" class="target"  @click="showNextTarget"/>
+
+        <button
+      v-if="targetNum >= 3"
+      class="nextBtn"
+      @click="nextPage"
+    >
+      הבא
+    </button>
     </div>
 </template>
 
@@ -43,6 +51,9 @@ export default {
     methods: {
         showNextTarget() {
             this.targetNum++;
+        },
+        nextPage() {
+
         }
     }
 }
@@ -80,6 +91,7 @@ export default {
     transform: translateX(-50%);
     top: 45%;
     width: 20rem;
+    cursor: pointer;
 }
 
 .target-container {
@@ -107,25 +119,26 @@ export default {
 
 .target0 {
     left: 13%;
+    bottom: 48%;
     display: block;
-
 }
 
 .target2 {
     right: 13%;
+    bottom: 48%;
     display: block;
 }
 
 .target1 {
     left: 13%;
-    bottom: 10%;
+    bottom: 20%;
     display: block;
 
 }
 
 .target3 {
     right: 13%;
-    bottom: 10%;
+    bottom: 20%;
     display: block;
 }
 
@@ -148,35 +161,35 @@ export default {
 }
 
 .arrow0 {
-    left: 40%;
-    transform: rotate(10deg);
+    left: 39%;
+    transform: skew(-10deg);
 }
 .arrow1 {
-    left: 45%;
-    transform: rotate(10deg);
+    left: 44%;
+    transform: skew(-5deg);
 }
 .arrow2 {
-    left: 50%;
-    transform: rotate(10deg);
+    left: 49%;
+    transform: skew(5deg);
 }
 .arrow3 {
-    left: 55%;
-    /* transform: sc(-10deg); */
+    left: 54%;
+    transform: skew(10deg);
 }
 .shoot0 {
-    animation: shoot0 2s ease-in-out forwards;
+    animation: shoot0 0.7s ease-in-out forwards;
 }
 
 .shoot1 {
-    animation: shoot0 2s ease-in-out forwards;
+    animation: shoot1 0.7s ease-in-out forwards;
 } 
 
 .shoot2 {
-    animation: shoot0 2s ease-in-out forwards;
+    animation: shoot2 0.7s ease-in-out forwards;
 }
 
 .shoot3 {
-    animation: shoot0 2s ease-in-out forwards;
+    animation: shoot3 0.7s ease-in-out forwards;
 }
 @keyframes shoot0 {
     from {
@@ -192,7 +205,7 @@ export default {
         bottom: -10%;
     }
     to {
-        bottom: 10%;
+        bottom: 5%;
     }
 }
 
@@ -201,7 +214,7 @@ export default {
         bottom: -10%;
     }
     to {
-        bottom: 10%;
+        bottom: 15%;
     }  
 }
 
@@ -211,7 +224,24 @@ export default {
         bottom: -10%;
     }
     to {
-        bottom: 10%;
+        bottom: 12%;
     }  
 }
+
+.nextBtn {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  height: 5%;
+  font-size: 1.4rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ff5d8f;
+  min-width: 10%;
+  max-width: 15%;
+  left: 7%;
+  bottom: 10%;
+  animation: fade 2s ease-in-out;
+}
+
 </style>

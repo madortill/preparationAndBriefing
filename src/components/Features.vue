@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #features {
   width: 100vw;
   height: 100vh;
@@ -60,6 +60,7 @@ export default {
   top: 30%;
   left: 16%;
   animation: bounce 2s linear infinite;
+  cursor: pointer;
 }
 
 @keyframes bounce {
