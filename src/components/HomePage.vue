@@ -6,7 +6,9 @@
         <navbar v-if="showNav" :titleIndex="subIndex" :part="subjNum"></navbar>
         <information-page
           :titleIndex="titleIndex"
-          @move-sub="moveSub"
+          @next-sub="nextMiniSub"
+          @prev-sub="prevMiniSub"
+          @set-subj-navbar= "setMiniSubInNavbar"
           @close-nav="closeNav"
           @to-question="showQuestion"
           :sectionNum="miniSubNum"
@@ -45,7 +47,7 @@ export default {
       showNav: true,
       showQuestions: false,
       indexQuestion: 0,
-      subIndex: 0,
+      subIndex: -1,
       subjNum: 0,
       miniSubNum: -1,
     };
@@ -56,6 +58,7 @@ export default {
       this.showWhiteWindow = false;
       if(partNum === 5) {
         this.miniSubNum++;
+        this.subIndex = 0;
       }
       
     },
@@ -64,34 +67,20 @@ export default {
       this.showWhiteWindow = true;
       this.subjNum++;
       this.subIndex = 0;
-      // if (this.titleIndex === 5) {
-      //   this.$emit("next-page");
-      // }
     },
     showQuestion() {
       this.showQuestions = true;
     },
-    moveSub(subNum) {
+    setMiniSubInNavbar(subNum) {
       this.subIndex = Number(subNum);
-      if(subNum === 1) {
-        sectionNum++;
-      }
-      // if() {
-
-      // }
-      // console.log(showQ);
-      // this.showQuestions = false;
-
-      // if (showQ === true) {
-      //   this.showQuestions = true;
-      //   this.indexQuestion++;
-      // } else {
-      //   this.showQuestions = false;
-      // }
-
-      // if (this.titleIndex >= 0 && this.titleIndex <= 4) {
-      //   this.titleIndex++;
-      // }
+    },
+    nextMiniSub() {
+        this.miniSubNum++;  
+     this.subIndex++;
+    },
+    prevMiniSub() {
+      this.miniSubNum--; 
+      this.subIndex--;
     },
     closeNav() {
       this.showNav = false;

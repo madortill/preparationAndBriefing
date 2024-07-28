@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style scoped>
+
 .list-text {
   font-size: 1.5rem;
   list-style: none;
@@ -52,7 +53,9 @@ export default {
   border-radius: 15px;
   color: rgb(255, 255, 255);
   text-align: center;
-
+width: 40%;
+position:relative;
+right:26%;
 }
 
 .list-text:hover {

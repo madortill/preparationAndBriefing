@@ -1,12 +1,25 @@
 <template>
     <div id="information-page">
         <!-- <h4 v-if="showTitle" class="text-side-title">{{ arrayTitle[titleIndex] }}</h4> -->
-        <main-self-preparation @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 0"></main-self-preparation>
-        <targets @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 1"></targets>
+        <main-self-preparation @move-to-ques="toTheQuestion" @move-to-next="setSubjNavbar" v-if="sectionNum === 0"></main-self-preparation>
+        <targets @show-next="showNextButton" @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 1"></targets>
         <principle-structure @move-to-next="nextSub" v-if="sectionNum === 2"></principle-structure>
         <principles-for-execution @move-to-next="nextSub" v-if="sectionNum === 3"></principles-for-execution>
         <highlights @move-to-next="nextSub" v-if="sectionNum === 4"></highlights>
-
+      
+        <button v-if="sectionNum > 0 && showNextBtn"
+      class="nextBtn"
+      @click="nextSub"
+    >
+      הבא
+    </button>
+    <button
+     v-if="sectionNum > 1 "
+      class="prevBtn"
+      @click="lastSub"
+    >
+      חזור
+    </button>
 
         <!-- <component :is="'subj' + titleIndex"></component> -->
 
@@ -40,22 +53,32 @@ export default {
                 'איתור מקור התופעות',
                 'התנגדויות במשוב',
             ],
-
+            showPrevBtn: false,
+            showNextBtn: false,
         };
     },
     methods: {
-
+        setSubjNavbar(index) {
+            this.$emit('set-subj-navbar', index);
+        },
         toTheQuestion () {
             this.$emit('to-question');
         },
 
-        nextSub(subNum) {
-            this.$emit('move-sub', subNum);
+        nextSub() {
+            this.$emit('next-sub');
+        },
+
+        lastSub() {
+            this.$emit('prev-sub');
         },
         // nextSection(subNum) {
         //     this.sectionNum++;
         //     this.nextSub(subNum);
         // },
+        showNextButton() {
+            this.showNextBtn = true;
+        }
     
     },
 }
@@ -70,41 +93,48 @@ export default {
     font-size: 1.5rem;
 }
 
-/* .contBtn {
-    background-color: #006998;
-    position: absolute;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 9%;
-    height: 6%;
-    left: 10%;
-    bottom: 13%;
-    transition: background-color 0.3s linear;
+
+
+.nextBtn {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  height: 5%;
+  font-size: 1.4rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ff5d8f;
+  min-width: 10%;
+  max-width: 15%;
+  left: 7%;
+  bottom: 10%;
+  transition: background-color 0.3s linear;
+  /* animation: fade 2s ease-in-out; */
 }
 
-.contBtn:hover {
-    background-color: #00A4E6;
+.nextBtn:hover {
+    background-color: #fd8aae;
 }
 
 .prevBtn {
-    background-color: #006998;
     position: absolute;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 9%;
-    height: 6%;
-    bottom: 13%;
+  border: none;
+  cursor: pointer;
+  height: 5%;
+  font-size: 1.4rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ff5d8f;
+  min-width: 10%;
+  max-width: 15%;
+  bottom: 10%;
+  animation: fade 2s ease-in-out;
+   
     right: 10%;
     transition: background-color 0.3s linear;
 }
 
 .prevBtn:hover {
-    background-color: #00A4E6;
-} */
+    background-color: #fd8aae;
+} 
 </style>

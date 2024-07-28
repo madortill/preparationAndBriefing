@@ -24,13 +24,13 @@
         <!-- Static image -->
         <img src="../../src/assets/media/target.png" alt="target" class="target"  @click="showNextTarget"/>
 
-        <button
+        <!-- <button
       v-if="targetNum >= 3"
       class="nextBtn"
       @click="nextPage"
     >
       הבא
-    </button>
+    </button> -->
     </div>
 </template>
 
@@ -51,10 +51,13 @@ export default {
     methods: {
         showNextTarget() {
             this.targetNum++;
+            if(this.targetNum >= 3) {
+                this.$emit('show-next');
+            }
         },
         nextPage() {
             //change the parameter!!!!!!!!!
-            this.$emit("move-to-next", 2);
+            this.$emit("move-to-next", 1);
         }
     }
 }

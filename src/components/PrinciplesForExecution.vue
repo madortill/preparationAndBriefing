@@ -9,6 +9,12 @@
           
         </div>
 
+        <button
+      class="nextBtn"
+      @click="nextPage"
+    >
+      הבא
+    </button>
     </div>
 
 </template>
@@ -24,7 +30,7 @@ export default {
     methods: {
         nextPage() {
             //change the parameter!!!!!!!!!
-            this.$emit("move-to-next", 4);
+            this.$emit("move-to-next", 3);
         }
     }
 }
@@ -35,6 +41,7 @@ export default {
     width: 100vw;
     height: 100vh;
 }
+
 .div-text {
     text-align: center;
 }
@@ -43,5 +50,21 @@ export default {
     margin: auto;
     font-size: 3rem;
     padding-top: 2%;
+}
+
+.nextBtn {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  height: 5%;
+  font-size: 1.4rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ff5d8f;
+  min-width: 10%;
+  max-width: 15%;
+  left: 7%;
+  bottom: 10%;
+  animation: fade 2s ease-in-out;
 }
 </style>
