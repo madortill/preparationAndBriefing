@@ -9,7 +9,7 @@
           @move-sub="moveSub"
           @close-nav="closeNav"
           @to-question="showQuestion"
-          :sectionNum="subjNum"
+          :sectionNum="miniSubNum"
         ></information-page>
       </div>
       <div v-if="showQuestions">
@@ -39,20 +39,25 @@ export default {
 
   data() {
     return {
-      showWhiteWindow: false,
+      showWhiteWindow: true,
       index: 0,
       titleIndex: 0,
       showNav: true,
       showQuestions: false,
       indexQuestion: 0,
       subIndex: 0,
-      subjNum: 1,
+      subjNum: 0,
+      miniSubNum: -1,
     };
   },
 
   methods: {
-    hidwWhiteWindow() {
+    hidwWhiteWindow(partNum) {
       this.showWhiteWindow = false;
+      if(partNum === 5) {
+        this.miniSubNum++;
+      }
+      
     },
     nextSub() {
       this.showQuestions = false;
@@ -68,6 +73,12 @@ export default {
     },
     moveSub(subNum) {
       this.subIndex = Number(subNum);
+      if(subNum === 1) {
+        sectionNum++;
+      }
+      // if() {
+
+      // }
       // console.log(showQ);
       // this.showQuestions = false;
 

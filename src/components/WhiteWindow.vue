@@ -168,7 +168,7 @@ export default {
       }, 6000);
       
     } else if (this.partNum === 5) {
-        this.$emit("hideWW");
+        this.$emit("hideWW", this.partNum);
       }
       this.partNum++;
     },

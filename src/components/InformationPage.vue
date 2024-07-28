@@ -3,9 +3,10 @@
         <!-- <h4 v-if="showTitle" class="text-side-title">{{ arrayTitle[titleIndex] }}</h4> -->
         <main-self-preparation @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 0"></main-self-preparation>
         <targets @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 1"></targets>
-        <!-- <feedback-call v-if="titleIndex === 1" @move-to-next="nextSub"></feedback-call>
-        <locating-source v-if="titleIndex === 2" @move-to-next="nextSub"></locating-source>
-        <objections-feedback v-if="titleIndex === 3" @move-to-next="nextSub"></objections-feedback> -->
+        <principle-structure @move-to-next="nextSub" v-if="sectionNum === 2"></principle-structure>
+        <principles-for-execution @move-to-next="nextSub" v-if="sectionNum === 3"></principles-for-execution>
+        <highlights @move-to-next="nextSub" v-if="sectionNum === 4"></highlights>
+
 
         <!-- <component :is="'subj' + titleIndex"></component> -->
 
@@ -15,6 +16,9 @@
 <script>
 import MainSelfPreparation from '@/components/MainSelfPreparation.vue'; 
 import Targets from './Targets.vue';
+import PrincipleStructure from './PrincipleStructure.vue';
+import PrinciplesForExecution from './PrinciplesForExecution.vue';
+import Highlights from './Highlights.vue';
 
 
 export default {
@@ -22,6 +26,9 @@ export default {
     components: {
         MainSelfPreparation, 
         Targets,
+        PrincipleStructure,
+        PrinciplesForExecution,
+        Highlights,
     },
     props: ["titleIndex", 'sectionNum'],
     data() {
@@ -32,7 +39,8 @@ export default {
                 'שיחת משוב',
                 'איתור מקור התופעות',
                 'התנגדויות במשוב',
-            ]
+            ],
+
         };
     },
     methods: {
@@ -44,9 +52,10 @@ export default {
         nextSub(subNum) {
             this.$emit('move-sub', subNum);
         },
-        nextSection() {
-            this.sectionNum++;
-        },
+        // nextSection(subNum) {
+        //     this.sectionNum++;
+        //     this.nextSub(subNum);
+        // },
     
     },
 }

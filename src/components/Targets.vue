@@ -53,7 +53,8 @@ export default {
             this.targetNum++;
         },
         nextPage() {
-
+            //change the parameter!!!!!!!!!
+            this.$emit("move-to-next", 2);
         }
     }
 }
@@ -156,6 +157,7 @@ export default {
     position: absolute;
     bottom: -10%;
     z-index: 3;
+    pointer-events: none;
     /* left: 40%;
     transform: rotate(10deg); */
 }
