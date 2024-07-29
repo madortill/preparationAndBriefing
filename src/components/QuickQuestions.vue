@@ -47,7 +47,9 @@ export default {
                     ans3:  "הציגה בסדר לא הגיוני",
                     correctAnswer: 1,
                     numAnswer: 3,
-                }, 
+                }, {
+                    Qtype: 2,
+                },
             ],
             // questions2: [
             //     {

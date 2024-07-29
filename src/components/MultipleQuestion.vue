@@ -42,6 +42,8 @@
                     }}</button>
                 </div>
             </div>
+
+            <img @click="backToStory" v-if="part === 1" src="../../src/assets/media/question-mark-reminder.png" alt="reminder" class="reminder"/>
         </div>
     </div>
 </template>
@@ -103,6 +105,9 @@ export default {
         },
         nextPart() {
             this.part++;
+        },
+        backToStory() {
+            this.part--;
         }
     },
 }
@@ -204,5 +209,12 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.reminder {
+    position: absolute;
+     top:8%;
+     right: 10%;
+     width: 8rem;
 }
 </style>
