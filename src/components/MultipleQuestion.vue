@@ -1,9 +1,13 @@
 <template>
     <div id="multiple-question">
         <div class="answers-container" @click="checkAnswer">
-            <h1 class="title-questionMultiple">{{ this.questionInfo.title }}</h1>
+            <h1  v-if="part !== 0 || this.questionInfo.Qtype !== 1" class="title-questionMultiple">{{ this.questionInfo.title }}</h1>
+            <h1 class="title-questionMultiple" v-if="this.questionInfo.Qtype === 1  && part === 0">לפניכם ביצוע תדריך שגוי.</h1>
             <div class = "div-mulQ">
-                <div class="row">
+                <!-- Qtype =  0 -->
+                <div class="row" v-if="this.questionInfo.Qtype === 0">
+                    <!-- <button v-for="i in 3" :key="i" :id="i" :ref="`button${i}`" class="pulse-button-hover"> {{ questionInfo['ans' + i] }}</button> -->
+
                     <button id="1" ref="1" class="pulse-button-hover">{{ this.questionInfo.ans1
                     }}</button>
                     <button id="2" ref="2" class="pulse-button-hover">{{ this.questionInfo.ans2
@@ -11,12 +15,30 @@
                      <button id="3" ref="3" class="pulse-button-hover">{{ this.questionInfo.ans3
                     }}</button>
                 </div>
-                <div class="row">
+                <div class="row" v-if="this.questionInfo.Qtype === 0">
                     <button id="4" ref="4" class="pulse-button-hover">{{ this.questionInfo.ans4
                     }}</button>
                      <button id="5" ref="5" class="pulse-button-hover">{{ this.questionInfo.ans5
                     }}</button>
                     <button id="6" ref="6" class="pulse-button-hover">{{ this.questionInfo.ans6
+                    }}</button>
+                </div>
+                <!-- Qtype =  1 -->
+                 <div v-if="part === 0">
+                    <p>הסמלת מיה עשתה תדריך למספר מפק"ציות לקראת המשובים שלהן.
+בתחילת התדריך מיה הציגה את מטרות התצפית, עברה על דף התצפית עד הבנה מלאה, נתנה את דגשיה וסיימה בכך ששאלה אם יש להן שאלות וסיימה את התדריך.
+</p>
+<button @click="nextPart">הבא</button>
+                 </div>
+                <div class="row" v-if="this.questionInfo.Qtype === 1 && part === 1">
+                    <button id="1" ref="1" class="pulse-button-hover">{{ this.questionInfo.ans1
+                    }}</button>
+                    <button id="2" ref="2" class="pulse-button-hover">{{ this.questionInfo.ans2
+                    }}</button>
+                   
+                </div>
+                <div class="row" v-if="this.questionInfo.Qtype === 1  && part === 1">
+                    <button id="3" ref="3" class="pulse-button-hover">{{ this.questionInfo.ans3
                     }}</button>
                 </div>
             </div>
@@ -32,16 +54,17 @@ export default {
     data() {
       return {
         arrayChosenCorrect: ['', '', ''],
+        part: 0,
       };
     },
     methods: {
         checkAnswer(event) {
             if (event.target.classList.contains('pulse-button-hover')) {
-                if ( this.isInTheArray(this.questionInfo.correctAnswer, event.target.id)) {
+                if ((this.questionInfo.Qtype === 0 && this.isInTheArray(this.questionInfo.correctAnswer, event.target.id)) || (this.questionInfo.Qtype !== 0 &&  String(event.target.id) === String(this.questionInfo.correctAnswer))) {
                     event.target.classList.add("correct");
-                    if(this.getNumCorrect() === 3) {
+                    if(this.questionInfo.Qtype === 0 && this.getNumCorrect() === 3 || this.questionInfo.Qtype !== 0 ) {
                         setTimeout(() => {
-                            for (let i = 1; i <= 6; i++) {
+                            for (let i = 1; i <= this.questionInfo.numAnswer; i++) {
                                 if (this.$refs[i].classList.contains('correct')) {
                                     this.$refs[i].classList.remove('correct');
                                 }
@@ -77,6 +100,9 @@ export default {
                 }
             }
             return counter;
+        },
+        nextPart() {
+            this.part++;
         }
     },
 }
@@ -99,15 +125,17 @@ export default {
 .row {
     display: flex;
     margin:  5% 0% 5% 0%;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .title-questionMultiple {
     color: #5f5a5a;
     font-size: 2.5rem;
-    padding: 8% 15%;
+    /* the rem */
+    padding: 8rem 15%;
     text-align: center;
     margin: 0;
+    width: 100%;
 }
 
 .pulse-button-hover {

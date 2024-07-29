@@ -2,10 +2,10 @@
     <div id="information-page">
         <!-- <h4 v-if="showTitle" class="text-side-title">{{ arrayTitle[titleIndex] }}</h4> -->
         <main-self-preparation @move-to-ques="toTheQuestion" @move-to-next="setSubjNavbar" v-if="sectionNum === 0"></main-self-preparation>
-        <targets @show-next="showNextButton" @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 1"></targets>
+        <targets @show-next="showNextButton" @move-to-next="nextSub" v-if="sectionNum === 1"></targets>
         <principle-structure @move-to-next="nextSub" v-if="sectionNum === 2"></principle-structure>
         <principles-for-execution @move-to-next="nextSub" v-if="sectionNum === 3"></principles-for-execution>
-        <highlights @move-to-next="nextSub" v-if="sectionNum === 4"></highlights>
+        <highlights  @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 4"></highlights>
       
         <button v-if="sectionNum > 0 && showNextBtn"
       class="nextBtn"
@@ -66,7 +66,12 @@ export default {
         },
 
         nextSub() {
-            this.$emit('next-sub');
+            if(this.sectionNum === 4) {
+                console.log('hi');
+                this.toTheQuestion();
+            } else {
+                this.$emit('next-sub');
+            }
         },
 
         lastSub() {

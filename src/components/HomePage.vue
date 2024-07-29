@@ -16,7 +16,7 @@
       </div>
       <div v-if="showQuestions">
         <quick-questions
-          :indexQuestion="indexQuestion"
+          :indexQ="indexQuestion"
           @next-sub="nextSub"
         ></quick-questions>
       </div>
@@ -46,7 +46,7 @@ export default {
       titleIndex: 0,
       showNav: true,
       showQuestions: false,
-      indexQuestion: 0,
+      indexQuestion: -1,
       subIndex: -1,
       subjNum: 0,
       miniSubNum: -1,
@@ -70,6 +70,7 @@ export default {
     },
     showQuestion() {
       this.showQuestions = true;
+      this.indexQuestion++;
     },
     setMiniSubInNavbar(subNum) {
       this.subIndex = Number(subNum);
