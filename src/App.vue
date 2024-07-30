@@ -84,7 +84,8 @@ export default {
     font-family: 'Heebo';
 }
 
-html {
+
+:root {
     /* font-size: calc(14px + 0.4vw) */
 }
 

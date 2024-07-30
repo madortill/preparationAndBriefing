@@ -18,6 +18,7 @@
         <quick-questions
           :indexQ="indexQuestion"
           @next-sub="nextSub"
+          @to-question="showQuestion"
         ></quick-questions>
       </div>
     </div>

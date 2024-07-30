@@ -105,9 +105,11 @@ export default {
         },
         nextPart() {
             this.part++;
+            this.$emit('next-part');
         },
         backToStory() {
             this.part--;
+            this.$emit('last-part');
         }
     },
 }
