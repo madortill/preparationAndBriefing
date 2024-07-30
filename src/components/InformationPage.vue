@@ -82,7 +82,10 @@ export default {
         //     this.nextSub(subNum);
         // },
         showNextButton() {
-            this.showNextBtn = true;
+            let timer = setTimeout(()=> {
+                this.showNextBtn = true;
+                clearTimeout(timer);
+            }, 900);
         }
     
     },

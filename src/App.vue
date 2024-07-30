@@ -86,7 +86,7 @@ export default {
 
 
 :root {
-    /* font-size: calc(14px + 0.4vw) */
+    /* font-size: calc(13px + 0.1vw) */
 }
 
 body {

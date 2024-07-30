@@ -24,11 +24,11 @@
                     }}</button>
                 </div>
                 <!-- Qtype =  1 -->
-                 <div v-if="part === 0">
-                    <p>הסמלת מיה עשתה תדריך למספר מפק"ציות לקראת המשובים שלהן.
+                 <div v-if="part === 0 && this.questionInfo.Qtype === 1">
+                    <p class="explain-text">הסמלת מיה עשתה תדריך למספר מפק"ציות לקראת המשובים שלהן.
 בתחילת התדריך מיה הציגה את מטרות התצפית, עברה על דף התצפית עד הבנה מלאה, נתנה את דגשיה וסיימה בכך ששאלה אם יש להן שאלות וסיימה את התדריך.
 </p>
-<button @click="nextPart">הבא</button>
+
                  </div>
                 <div class="row" v-if="this.questionInfo.Qtype === 1 && part === 1">
                     <button id="1" ref="1" class="pulse-button-hover">{{ this.questionInfo.ans1
@@ -42,7 +42,7 @@
                     }}</button>
                 </div>
             </div>
-
+            <button class="nextBtn" v-if="part === 0  && this.questionInfo.Qtype === 1" @click="nextPart">הבא</button>
             <img @click="backToStory" v-if="part === 1" src="../../src/assets/media/question-mark-reminder.png" alt="reminder" class="reminder"/>
         </div>
     </div>
@@ -115,13 +115,41 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #multiple-question {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.nextBtn {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  height: 5%;
+  font-size: 1.4rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ff5d8f;
+  min-width: 10%;
+  max-width: 15%;
+  left: 7%;
+  bottom: 10%;
+  animation: fade 2s ease-in-out;
+}
+
+.explain-text {
+  font-size: 1.8rem;
+  color: rgb(79, 77, 77);
+  margin: 0;
+  display: inline;
+  text-align: center;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:90%
+}
 
 .answers-container {
     display: flex;

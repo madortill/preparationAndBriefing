@@ -82,7 +82,7 @@
       <p style="font-size: 2.3rem; color: #aa336a">בהצלחה!</p>
     </div>
 
-    <div  v-if="partNum === 5">
+    <div class="explain-subj-container"  v-if="partNum === 5">
       <p class="explain-text">קודם כל -</p>
       <p class="bold-text">{{arrayExplain[subjNum][0]}}</p>
       <br /><br /><br />
@@ -659,12 +659,9 @@ export default {
 
 .explain-text {
   font-size: 2.1rem;
-  /* padding: 1.5% 7% 2%; */
   color: rgb(79, 77, 77);
   margin: 0;
   display: inline;
-  /* justify-content: center;
-  align-content: center; */
   text-align: center;
 }
 
@@ -717,6 +714,11 @@ export default {
   to {
     opacity: 1; /* End with opacity 1 (fully opaque) */
   }
+}
+
+.explain-subj-container {
+  position: relative;
+  top: 10%;
 }
 
 .talk-text {

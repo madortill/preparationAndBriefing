@@ -2,7 +2,7 @@
   <div id="dragging-question">
     <div class="draggable-container">
       <h1 class="title-questionDragging">{{ this.questionInfo.title }}</h1>
-      <p class="text-drag">* גרור את התשובה לפי הסדר המתאים.</p>
+      <p class="text-drag">* גררו את התשובות בהתאם.</p>
       <div
         class="draggable-area"
         @drop="
@@ -198,6 +198,7 @@ export default {
 </script>
 
 <style>
+
 .draggable-area {
   position: absolute;
   width: 15%;
