@@ -1,10 +1,13 @@
 <template>
-  <div
+  <div class="white-window-container">
+
+
+    <div
     id="white-window"
     class="white-window"
     :class="partNum === 4 || partNum === 5 ? 'explain-page center-text' : ''"
   >
-    <div class="center-text pos-start-text" v-if="partNum === 0">
+    <div class="center-text" v-if="partNum === 0">
       <p class="explain-text">
         בלומדה זו נתמקד ב-2 השלבים הראשונים ממעגל החניכה:
       </p>
@@ -13,7 +16,7 @@
       <p class="bold-text">תדריך</p>
     </div>
 
-    <div class="center-text" v-if="partNum === 1 || partNum === 2">
+    <div class="center-text hanica-circle-info" v-if="partNum === 1 || partNum === 2">
       <div>
         <img src="../../src/assets/media/bell.svg" class="bell" alt="bell" />
         <p class="explain-text reminder-text">תזכורת למעגל החניכה:</p>
@@ -29,15 +32,15 @@
         >
           {{ arrayAgo[index] }}
         </div>
+        <!-- the arrows -->
+        <img
+          v-for="i in 5"
+          :key="i"
+          class="arrow"
+          :class="getArrowClass(i)"
+          src="../../src/assets/media/arrow.svg"
+        />
       </div>
-      <!-- the arrows -->
-      <img
-        v-for="i in 5"
-        :key="i"
-        class="arrow"
-        :class="getArrowClass(i)"
-        src="../../src/assets/media/arrow.svg"
-      />
 
       <!-- the openning window -->
       <div v-if="partNum === 2">
@@ -113,6 +116,8 @@
       הבא
     </button>
   </div>
+
+  </div>
 </template>
 
 <script>
@@ -183,6 +188,14 @@ export default {
 </script>
 
 <style scoped>
+
+.white-window-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* typewriter */
 
 .type-writer > p {
@@ -236,11 +249,11 @@ export default {
 /* end-typewriter */
 
 .reminder-text {
-  z-index: 2;
-  width: 100%;
-  position: absolute;
-  right: 3%;
-  top:2%;
+
+}
+
+.hanica-circle-info {
+  display: grid;
 }
 
 .jumping-window {
@@ -264,15 +277,10 @@ export default {
 }
 
 .bell {
-  position: absolute;
-  top: -5%;
-  right: 22%;
-  display: block;
-  width: 40px;
-  height: 40px;
-  font-size: 40px;
-  margin: 50px auto 0;
-  color: #9e9e9e;
+  display: inline;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 2rem;
   -webkit-animation: ring 4s 0.7s ease-in-out infinite;
   -webkit-transform-origin: 50% 4px;
   -moz-animation: ring 4s 0.7s ease-in-out infinite;
@@ -444,43 +452,45 @@ export default {
 
 .arrow {
   width: 4rem;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .arrow1 {
-  top: 30%;
-  right: 30%;
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
   transform: rotate(150deg);
 }
 
 .arrow2 {
-  top: 30%;
-  left: 30%;
+  grid-column: 6 /7;
+  grid-row: 1 / 2;
   transform: rotate(100deg);
 }
 
 .arrow3 {
-  bottom: 35%;
-  left: 20%;
+  grid-column: 6 / 7;
+  grid-row: 3 / 4;
+  /* align-self: flex-end; */
   transform: rotate(-10deg);
 }
 
 .arrow4 {
-  bottom: 15%;
-  left: 45%;
+  grid-column: 4 /5;
+  grid-row: 5/6;
   transform: rotate(-60deg);
 }
 
 .arrow5 {
-  bottom: 35%;
-  right: 20%;
+  grid-column: 2 / 3;
+  grid-row: 3 /4;
   transform: rotate(240deg);
 }
 
 .circle {
-  width: 100%;
+  width: 7rem;
   height: 7rem;
-  border-radius: 50%;
+  margin-top: 1rem;
+    border-radius: 10rem;
   text-align: center;
   color: white;
   font-size: 1.5rem;
@@ -500,17 +510,17 @@ export default {
   width: 8rem;
   height: 8rem;
   padding: 2%;
-  /* cursor: pointer; */
 }
 
 .circle-container {
-  position: absolute;
+  /* position: absolute;
   top: 20%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
   width: 100%; /* Adjust the width to fit your design */
-  height: 70%; /* Adjust the height to fit your design */
-  margin: auto; /* Center the container */
+  height: 27rem;/* Adjust the height to fit your design */
+  margin-inline: auto; /* Center the container */
+  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(7, 14.3%);
   grid-template-rows: repeat(5, 20%);
@@ -519,7 +529,6 @@ export default {
 .circle0 {
   grid-column-start: 6;
   grid-row-start: 2;
-  position: relative;
 }
 
 .circle1 {
@@ -555,27 +564,27 @@ export default {
 }
 
 .posCenterBtn {
-  position: absolute;
+  /* position: absolute;
   bottom: 5%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
+  margin-top: 6rem;
 }
 .posLeftBtn {
-  position: absolute;
-  bottom: 5%;
-  left: 7%;
+  /* margin-left:5rem; */
+ margin-left:  -28rem;
 }
 
 .startBtn {
   border: none;
   cursor: pointer;
-  width: 15%;
-  height: 7%;
+  width: 6rem;
+  height: 3rem;
   color: #ffffff;
   background-color: #ff87ab;
   font-size: 1.6rem;
   border-radius: 100px;
-  min-width: 12%;
+  min-width: 4rem;
 }
 .startBtn {
   animation: borderPulse 4000ms infinite ease-out;
@@ -637,28 +646,28 @@ export default {
 /* Declare border pulse animation */
 
 #white-window {
-  position: absolute;
-  width: 40%;
-  height: 70%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  width: 39rem;
+  height: 35rem;
   background: #fff;
   border-radius: 3rem;
   box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .hide-bg {
-  position: absolute;
-  bottom: 0%;
+  /* position: absolute; */
+  /* bottom: 0%; */
   background: #c7c5c5;
   opacity: 0.8;
-  width: 100%;
-  height: 100%;
+  width: 39rem;
+  height: 35rem;
 }
 
 .explain-text {
-  font-size: 2.1rem;
+  font-size: 1.4rem;
   color: rgb(79, 77, 77);
   margin: 0;
   display: inline;
@@ -669,19 +678,12 @@ export default {
   font-size: 2.5rem;
   font-weight: bold;
   display: inline;
-  margin: 2%;
-}
-
-.pos-start-text {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
+  margin: 1rem;
 }
 
 .center-text {
   text-align: center;
+  width: 35rem;
 }
 
 .goalBtn {
