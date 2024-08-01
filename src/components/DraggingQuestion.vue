@@ -124,7 +124,7 @@ export default {
         if (indexCorrectAns === rightAns.length && wrongAnsCounter === 0) {
           this.showTextSuccess = true;
           setTimeout(() => {
-            this.$emit("next-question");
+            this.$emit("next-to-end");
           }, 2000);
         }
       }
@@ -176,7 +176,7 @@ export default {
         if (indexCorrectAns === rightAns.length && wrongAnsCounter === 0) {
           this.showTextSuccess = true;
           setTimeout(() => {
-            this.$emit("next-question");
+            this.$emit("next-to-end");
           }, 2000);
         }
       }

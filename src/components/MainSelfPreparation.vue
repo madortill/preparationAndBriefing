@@ -174,7 +174,7 @@ export default {
   position: relative;
   padding: 0% 20% 0 35%;
   right: 8%;
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   display: block;
   z-index: 1;
   color: #3a3737;
@@ -202,7 +202,7 @@ export default {
 
 .title-text {
   margin: auto;
-  font-size: 3rem;
+  font-size: 2.5rem;
   padding-top: 2%;
 }
 
@@ -288,8 +288,8 @@ export default {
 }
 
 .circle {
-  width: 18rem;
-  height: 7rem;
+  width: 15rem;
+  height: 5rem;
   border-radius: 100px;
   background-color: #68d8d6;
   text-align: center;
@@ -316,20 +316,20 @@ export default {
 
 .circle-ago:hover {
   box-shadow: 0 15px 9px rgba(0, 0, 0, 0.4);
-  width: 17rem;
-  height: 17rem;
+  width: 15rem;
+  height: 15rem;
   padding: 2%;
   cursor: pointer;
 }
 
 .circle-ago {
   z-index: 0;
-  width: 15rem;
-  height: 15rem;
+  width: 14rem;
+  height: 14rem;
   border-radius: 50%;
   text-align: center;
   color: rgb(65, 63, 63);
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 550;
   display: flex;
   justify-content: center;
@@ -350,16 +350,16 @@ export default {
 
 .circle-ago:nth-child(1) {
   left: 20%;
-  bottom: 25%;
+  bottom: 20%;
 }
 
 .circle-ago:nth-child(2) {
-  bottom: 25%;
+  bottom: 20%;
 }
 
 .circle-ago:nth-child(3) {
   right: 20%;
-  bottom: 25%;
+  bottom: 20%;
 }
 
 .floatAnimation {
@@ -382,7 +382,7 @@ export default {
     font-size: 2rem;
     width: 15rem;
     height: 15rem;
-    bottom: 25%;
+    bottom: 20%;
   }
 }
 

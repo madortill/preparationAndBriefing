@@ -23,59 +23,36 @@
   
   <style scoped>
   #open-screen {
-    background-size: 100% 100%;
+    background-size: 100vw 100vh;
     direction: rtl;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     background-color: #ebebeb;
+    flex-direction: column;
   }
   
-  .logo-white {
-    width: 10%;
-    position: absolute;
-    left: 20%;
-  }
-  
+
   .text-title {
     color: rgb(83, 82, 82);
     font-family: "Heebo-Bold";
-    font-size: 8.5vw;
-    position: absolute;
-    top: 7%;
+    font-size: 7rem;
     /* floatAnimation 3s ease-in-out infinite; */
     animation: floatAnimation 3s ease-in-out infinite;
-    width: 60%;
+    width: 50rem;
     text-align: center;
   }
   
-  @keyframes growShrink {
-    0% {
-      /* bottom: 30%; */
-      font-size: 10rem;
-    }
-    50% {
-      /* bottom: 32%; */
-      font-size: 12rem;
-    }
-    100% {
-      /* bottom: 30%; */
-      font-size: 10rem;
-    }
-  }
   .btnNext {
-    position: absolute;
     border: none;
     cursor: pointer;
-    height: 7%;
-    /* left: 10%; */
-    bottom: 15%;
-    font-size: 2.6rem;
+    height: 4rem;
+    font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: #ff87ab;
-    min-width: 13%;
+    min-width: 9rem;
   }
   
   .btnNext {

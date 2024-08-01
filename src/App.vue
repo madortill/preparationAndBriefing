@@ -1,25 +1,26 @@
 <template>
   <div id="app">
         <img src="@/assets/media/mifkada-logo.png" class="logo" alt="Logo" @click = "homePage">
-        <!-- <img v-if="page > 0" src="@/assets/media/graytriangle.png" alt="gray triangle" class="gray-triangle"> -->
-        <button v-show = "page === 0  || page === 2" class = "aboutBtn" @click = "openAbout">i</button>
+        <button v-show = "page === 0" class="aboutBtn" @click = "openAbout">i</button>
         <Transition>
           <div v-show = "showAbout" class="div-about">
           <h3 class = "list-text-about">מפתחת ראשית:</h3>
             <p class = "list-text-about">טור' דני שריקי</p>
             <h3 class = "list-text-about">גרפיקה:</h3>
             <p class = "list-text-about">טור' דני שריקי</p>
+            <h3 class = "list-text-about">מומחית תוכן:</h3>
+            <p class = "list-text-about">רב"ט אלה טייטלר</p>
             <h3 class = "list-text-about">רת"ח מו"פ:</h3>
             <p class = "list-text-about">רס"ל אביב אואנונו</p>
             <h3 class = "list-text-about">רמ"ד טי"ל:</h3>
             <p class = "list-text-about">רס"מ שלומי אוגרן</p>
             <h3 class = "list-text-about">גרסה:</h3>
-            <p class = "list-text-about">יוני 2024</p>
+            <p class = "list-text-about">יולי 2024</p>
         </div>
       </Transition>
         <open-screen v-if="page === 0" @next-page="nextPage"></open-screen>
         <home-page  v-if="page === 1" @next-page="nextPage"></home-page>
-        <end-screen v-if="page===2"></end-screen>
+        <end-screen v-if="page===2" ></end-screen>
 
         <img src="@/assets/media/madortill.png" alt="mador-till" class="mador-till">
     </div>
@@ -27,7 +28,8 @@
 
 <script>
 import OpenScreen from '@/components/OpenScreen.vue' ; 
-import homePage from '@/components/HomePage.vue';
+import HomePage from '@/components/HomePage.vue';
+import EndScreen from '@/components/EndScreen.vue';
 
 
 
@@ -35,7 +37,8 @@ export default {
     name: "app",
     components: {
     OpenScreen,
-    homePage,
+    HomePage,
+    EndScreen,
     },
     data() {
         return {
@@ -86,7 +89,7 @@ export default {
 
 
 :root {
-    /* font-size: calc(13px + 0.1vw) */
+    font-size: calc(13px + 0.4vw)
 }
 
 body {
@@ -132,12 +135,12 @@ body {
   transition: background-color 0.3s ease;
   background-color: #02ade1;
   border-radius: 150px;
-  width: 2%;
-  height: 4%;
+  width: 2rem;
+  height: 2.5rem;
   cursor: pointer;
   left: 2.5%;
   top: 16%;
-
+    padding: 0.2rem;
 }
 
 .aboutBtn:hover{
@@ -145,19 +148,20 @@ body {
 }
 .div-about {
   position: absolute;
-  width: 12%;
-  height: 53%;
-  left: 10%;
-  top: 8%;
+  width: 11rem;
+  height: 27rem;
+  left: 8rem;
+  top: 7rem;
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
   text-align: center;
+  z-index: 4;
 }
 
 .list-text-about {
   transition: background-color 0.5s ease;
-  margin: 5%;
+  margin: 1rem;
 }
 .list-text-about:hover {
   background-color: #dbdbdb;

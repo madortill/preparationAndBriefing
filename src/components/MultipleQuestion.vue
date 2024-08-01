@@ -165,7 +165,7 @@ export default {
 
 .title-questionMultiple {
     color: #5f5a5a;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     /* the rem */
     padding: 8rem 15%;
     text-align: center;
@@ -175,14 +175,15 @@ export default {
 
 .pulse-button-hover {
     background-color: #ff87ab;
-    margin: 0 1rem;
+    margin: auto;
     cursor: pointer;
     border: none;
-    width: 40%;
-    font-size: 1.7rem;
+    width: 11rem;
+    height: 6.5rem;
+    font-size: 1.4rem;
     color: #ffffff;
     border-radius: 100px;
-    padding: 20px 30px;
+    padding: 10px 10px;
 }
 
 .pulse-button-hover:hover {
@@ -228,8 +229,8 @@ export default {
 }
 .div-mulQ {
     position: absolute;
-    width: 45%;
-    height: 40%;
+    width: 40rem;
+    height: 21rem;
     background: #fff;
     border-radius: 3rem;
     box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);

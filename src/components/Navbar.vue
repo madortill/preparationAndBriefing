@@ -86,7 +86,7 @@
     display: inline-block;
     padding: 5px 50px;
     margin: 10px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: #777;
     position: relative;
@@ -103,7 +103,7 @@
   }
   
   .subject {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   </style>
   

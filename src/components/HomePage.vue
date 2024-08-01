@@ -19,6 +19,7 @@
           :indexQ="indexQuestion"
           @next-sub="nextSub"
           @to-question="showQuestion"
+          @to-end-screen="toEndScreen"
         ></quick-questions>
       </div>
     </div>
@@ -87,6 +88,9 @@ export default {
     closeNav() {
       this.showNav = false;
     },
+    toEndScreen() {
+      this.$emit('next-page');
+    },
   },
 };
 </script>
@@ -96,8 +100,6 @@ export default {
   background-color: #f2f2f2;
   width: 100vw;
   height: 100vh;
-  /* display: flex; */
-  position: absolute;
-  justify-content: center;
+
 }
 </style>

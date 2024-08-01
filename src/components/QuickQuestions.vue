@@ -2,7 +2,7 @@
     <div id="quick-questions">
       <multiple-question v-if="questionToPass.Qtype === 0 || questionToPass.Qtype === 1" @next-question="updateIndex"
         :questionInfo="questionToPass" :numQues="indexQuestion"  @next-part="nextPart" @last-part="lastPart"></multiple-question>
-        <dragging-question v-if="questionToPass.Qtype === 2" :key="questionToPass" @next-question="updateIndex"
+        <dragging-question v-if="questionToPass.Qtype === 2" :key="questionToPass" @next-to-end="toTheEnd"
         :questionInfo="questionToPass"></dragging-question>
      
     </div>
@@ -85,7 +85,11 @@ export default {
         },
         lastPart() {
             this.inPart2 = false;
+        },
+        toTheEnd() {
+            this.$emit('to-end-screen');
         }
+        
     },
     computed: {
         // questionToPass() {
