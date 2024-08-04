@@ -45,6 +45,12 @@
     >
       {{ nextBtnText }}
     </button>
+    <!-- <button
+      class="prevBtn"
+      @click="backToFirstLF"
+    >
+      חזור
+    </button> -->
   </div>
 </template>
 
@@ -399,7 +405,30 @@ export default {
     transform: translateY(0);
   }
 }
+
 .disabled {
   background-color: #dcdcdc;
 }
+
+.prevBtn {
+    position: absolute;
+  border: none;
+  cursor: pointer;
+  height: 5%;
+  font-size: 1.4rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ff5d8f;
+  min-width: 10%;
+  max-width: 15%;
+  bottom: 10%;
+  animation: fade 2s ease-in-out;
+   
+    right: 10%;
+    transition: background-color 0.3s linear;
+}
+
+.prevBtn:hover {
+    background-color: #fd8aae;
+} 
 </style>

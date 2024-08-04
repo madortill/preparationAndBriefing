@@ -18,6 +18,8 @@
           {{ item }}
         </li>
       </ul>
+
+     
     </div>
   </div>
 </template>
@@ -45,6 +47,9 @@ export default {
       this.showPart++;
       this.$emit("next-info");
     },
+    back() {
+      this.showPart--;
+    }
   },
 };
 </script>
@@ -108,5 +113,6 @@ export default {
     transform: translateX(-50%);
     padding: 0%;
 }
+
 
 </style>

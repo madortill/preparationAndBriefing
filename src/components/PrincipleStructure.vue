@@ -9,12 +9,6 @@
           
         </div>
 
-        <!-- <button
-      class="nextBtn"
-      @click="nextPage"
-    >
-      הבא
-    </button> -->
 
     </div>
 
