@@ -6,7 +6,10 @@
             <!-- <p class="info-text">
                 לתדריך קיימות מספר מטרות:
             </p> -->
-          
+          <video width="700" height="490" controls>
+            <source src="../../src/assets/video/first.mp4" type="video/mp4">
+            your browser does not support video tag
+          </video>
         </div>
 
 
