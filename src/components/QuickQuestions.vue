@@ -1,7 +1,7 @@
 <template>
     <div id="quick-questions">
       <multiple-question v-if="questionToPass.Qtype === 0 || questionToPass.Qtype === 1" @next-question="updateIndex"
-        :questionInfo="questionToPass" :numQues="indexQuestion"  @next-part="nextPart" @last-part="lastPart"></multiple-question>
+        :questionInfo="questionToPass" :numQues="indexQ"  @next-part="nextPart" @last-part="lastPart"></multiple-question>
         <dragging-question v-if="questionToPass.Qtype === 2" :key="questionToPass" @next-to-end="toTheEnd"
         :questionInfo="questionToPass"></dragging-question>
      

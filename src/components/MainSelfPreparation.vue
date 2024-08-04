@@ -379,9 +379,9 @@ export default {
   }
 
   100% {
-    font-size: 2rem;
-    width: 15rem;
-    height: 15rem;
+    font-size: 1.7rem;
+    width: 12rem;
+    height: 12rem;
     bottom: 20%;
   }
 }

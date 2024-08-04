@@ -11,26 +11,18 @@
             </p>
         </div>
 
-        <!-- Loop through targetsArray to display targets -->
-        <div v-for="(target, index) in targetsArray" :key="index" class="target-container" :class="targetNum >= index ?  'target' + index : ''" >
+    <!-- Static image -->
+     <div class="target-graphics-container">
+        <img src="../../src/assets/media/target.png" alt="target" class="target"  @click="showNextTarget"/>
+        <!-- the arrows -->
+        <img  v-for="(i, index) in 4" :key="index" src="../../src/assets/media/arrowTarget.svg" alt="arrow" class="arrow" :class="['arrow' + index , targetNum >= index ? `shoot${index}`: '' ]"/>
+     </div>
+   
+
+             <!-- Loop through targetsArray to display targets -->
+             <div v-for="(target, index) in targetsArray" :key="index" class="target-container" :class="targetNum >= index ?  'target' + index : ''" >
             <p class="text">{{ target }}</p>
         </div>
-
-        <!-- the arrows -->
-        <!-- <img  v-for="(i, index) in 4" :key="index" src="../../src/assets/media/arrowTarget.svg" alt="arrow" class="arrow" :class="'arrow' + index" :style="targetNum >= index ? 'animation: shoot1 2s ease-in-out forwards' : '' "/> -->
-
-        <img  v-for="(i, index) in 4" :key="index" src="../../src/assets/media/arrowTarget.svg" alt="arrow" class="arrow" :class="['arrow' + index , targetNum >= index ? `shoot${index}`: '' ]"/>
-
-        <!-- Static image -->
-        <img src="../../src/assets/media/target.png" alt="target" class="target"  @click="showNextTarget"/>
-
-        <!-- <button
-      v-if="targetNum >= 3"
-      class="nextBtn"
-      @click="nextPage"
-    >
-      הבא
-    </button> -->
     </div>
 </template>
 
@@ -66,12 +58,15 @@ export default {
 <style scoped>
 #targets {
     width: 100vw;
-    height: 100vh;
+    height: 90rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .div-text {
     text-align: center;
+    height: 13rem;
 }
-
 .title-text {
     margin: auto;
     font-size: 3rem;
@@ -79,7 +74,7 @@ export default {
 }
 
 .info-text {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     color: #3a3737;
     margin-bottom: 0%;
 }
@@ -90,17 +85,20 @@ export default {
 }
 
 .target {
-    position: absolute;
+    /* position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 45%;
-    width: 20rem;
+    top: 45%; */
+    width: 15rem;
+    height: 15rem;
     cursor: pointer;
+    grid-row: 1/1;
+    grid-column: 1/1;
 }
 
 .target-container {
-    width: 20rem;
-    height: 10rem;
+    width: 17rem;
+    height: 9rem;
     border-radius: 40px;
     background-color: white;
     text-align: center;
@@ -118,7 +116,8 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    width: 10rem;
 }
 
 .target0 {
@@ -156,29 +155,33 @@ export default {
 }
 
 .arrow {
-    width: 15rem;
-    position: absolute;
-    bottom: -10%;
+    width: 12rem;
+    /* position: absolute; */
+    /* top: 32rem; */
     z-index: 3;
     pointer-events: none;
+    grid-row: 1/1;
+    grid-column: 1/1;
+    position: relative;
+    top: 11.5rem;
     /* left: 40%;
     transform: rotate(10deg); */
 }
 
 .arrow0 {
-    left: 39%;
+    left: -3rem;
     transform: skew(-10deg);
 }
 .arrow1 {
-    left: 44%;
+    left: 0rem;
     transform: skew(-5deg);
 }
 .arrow2 {
-    left: 49%;
+    left: 3rem;
     transform: skew(5deg);
 }
 .arrow3 {
-    left: 54%;
+    left: 6rem;
     transform: skew(10deg);
 }
 .shoot0 {
@@ -197,39 +200,28 @@ export default {
     animation: shoot3 0.7s ease-in-out forwards;
 }
 @keyframes shoot0 {
-    from {
-        bottom: -10%;
-    }
+  
     to {
-        bottom: 10%;
+        top: 5rem;
     }
 } 
 
 @keyframes shoot1 {
-    from {
-        bottom: -10%;
-    }
     to {
-        bottom: 5%;
+        top: 0rem;
     }
 }
 
 @keyframes shoot2 {
-    from {
-        bottom: -10%;
-    }
     to {
-        bottom: 15%;
+        top: 3rem;
     }  
 }
 
 
 @keyframes shoot3 {
-    from {
-        bottom: -10%;
-    }
     to {
-        bottom: 12%;
+        top: 1rem;
     }  
 }
 
@@ -249,4 +241,10 @@ export default {
   animation: fade 2s ease-in-out;
 }
 
+.target-graphics-container {
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr;
+    overflow: visible;
+}
 </style>

@@ -50,7 +50,7 @@
   
   <style scoped>
   .container {
-    height: 12vh;
+    height: 6rem;
     width: 100vw;
     display: flex;
     align-items: center;

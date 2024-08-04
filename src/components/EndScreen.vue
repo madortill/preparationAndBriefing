@@ -17,6 +17,7 @@
           </p>
         </div>
         <button 
+        v-if="showBtn"
       class="nextBtn"
       @click="nextPart"
     >
@@ -37,6 +38,7 @@ export default {
   components: {},
   data() {
     return {
+      showBtn: false,
       part: 0,
       text: 'ו . . .',
       summaryArray: [
@@ -46,6 +48,12 @@ export default {
         'עכשיו, אתם מוכנים להתקדם לשלב הבא "תצפית".',
       ],
     };
+  },
+  mounted() {
+let timer =  setTimeout(()=> {
+this.showBtn = true;
+    clearTimeout(timer);
+}, 9600);
   },
   methods: {
     nextPart() {
