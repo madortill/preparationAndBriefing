@@ -65,12 +65,9 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     height: 50%;
     width:100%;
-    bottom: 20%;
+    margin-top: -2rem;
 }
 
 .flip-card {

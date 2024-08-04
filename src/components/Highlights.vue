@@ -73,17 +73,22 @@ right:26%;
 
 .title-text {
   margin: auto;
-  font-size: 3rem;
-  padding-top: 2%;
+    font-size: 3rem;
+    padding-top: 2%;
 }
+
 
 .info-text {
   position: relative;
   padding: 0% 20% 0 35%;
   right: 8%;
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   display: block;
   z-index: 1;
   color: #3a3737;
+}
+
+.ul-questions {
+  margin-top: auto;
 }
 </style>

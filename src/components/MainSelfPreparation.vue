@@ -380,8 +380,8 @@ export default {
 
   100% {
     font-size: 1.7rem;
-    width: 12rem;
-    height: 12rem;
+    width: 14rem;
+    height: 14rem;
     bottom: 20%;
   }
 }

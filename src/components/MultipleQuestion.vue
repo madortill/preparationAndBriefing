@@ -139,7 +139,7 @@ export default {
 }
 
 .explain-text {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: rgb(79, 77, 77);
   margin: 0;
   display: inline;
@@ -244,8 +244,8 @@ export default {
 
 .reminder {
     position: absolute;
-     top:8%;
-     right: 10%;
-     width: 8rem;
+    top: 8%;
+    right: 5rem;
+    width: 16rem;
 }
 </style>

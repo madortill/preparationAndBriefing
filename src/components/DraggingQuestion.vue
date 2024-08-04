@@ -201,14 +201,14 @@ export default {
 
 .draggable-area {
   position: absolute;
-  width: 15%;
-  height: 55%;
-  left: 40%;
-  bottom: 30%;
-  background: #fff;
-  border-radius: 50px;
-  box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
-  text-align: center;
+    width: 18rem;
+    height: 25rem;
+    left: 40%;
+    top: 8rem;
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    text-align: center;
 }
 
 .title-questionDragging {
@@ -224,7 +224,7 @@ export default {
   display: inline-block;
   padding: 8px 30px;
   margin: 10px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
   position: relative;
   background: #ff87ab;
@@ -237,7 +237,7 @@ export default {
 
 .text-drag {
   position: absolute;
-  bottom: 85%;
+  top: 4rem;
   font-size: 1.4rem;
   color: #5f5a5a;
   animation: floatAnimation 3s ease-in-out infinite;
@@ -273,14 +273,14 @@ export default {
 
 .word-warehouse {
   position: absolute;
-  width: 88%;
-  /* height: 10%; */
-  left: 5%;
-  bottom: 8%;
-  background: #fff;
-  border-radius: 50px;
-  box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
-  text-align: center;
+    width: 85%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2rem;
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    text-align: center;
 }
 
 .correct {

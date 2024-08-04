@@ -24,20 +24,25 @@
       הבא
     </button>
       </div>
-      <div v-if="part === 1 || part === 2">
-<p>{{ text }}</p>
-<p v-if="part === 2">סיימת בהצלחה את הלומדה!!</p>
+      <div class="adjust-size" :class="!showFade ? 'fade-in-animation' : ''" v-if="part === 1 || part === 2">
+<p :class="showFade ? 'fade-in-out-animation' : 'fade-in'" class="the-text">{{ text }}</p>
+<p v-if="part === 2" class="tat-text">סיימת בהצלחה את הלומדה!!</p>
       </div>
     </div>
+    <div class="black-square" v-show="part === 1"> </div>
+    <confetti v-show="part === 2"></confetti>
+
   </div>
 </template>
 
 <script>
+import Confetti from './Confetti.vue';
 export default {
   name: "end-screen",
-  components: {},
+  components: {Confetti},
   data() {
     return {
+        showFade: true,
       showBtn: false,
       part: 0,
       text: 'ו . . .',
@@ -58,9 +63,14 @@ this.showBtn = true;
   methods: {
     nextPart() {
         this.part++;
-        if (this.part === 1) {
-
-        }
+        this.showFade = true;
+        let timer =  setTimeout(()=> {
+            this.part++;
+            this.text = 'כ ל      ה כ ב ו ד';
+            this.showFade = false;
+            clearTimeout(timer);
+        }, 4000);
+        
     },
   },
 };
@@ -74,6 +84,15 @@ this.showBtn = true;
     align-items: center;
     justify-content: center
 }
+
+.black-square {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    animation: fade 4s linear;
+
+}
 .white-window {
   width: 40rem;
   height: 25rem;
@@ -83,6 +102,10 @@ this.showBtn = true;
   padding: 1.5rem;
 }
 
+.adjust-size {
+    /* width: 100%;
+  height: 100%; */
+}
 /* typewriter */
 
 .type-writer > p {
@@ -105,10 +128,7 @@ this.showBtn = true;
   position: relative;
   height: fit-content;
   flex-direction: column;
-  /* text-align: center; */
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
 }
@@ -173,4 +193,42 @@ this.showBtn = true;
     font-size: 2rem;
 
 }
+
+@keyframes fade {
+  0% {
+    opacity: 0; 
+  }
+  50% {
+    opacity: 0.5; 
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0; /* Start with opacity 0 (fully transparent) */
+  }
+  to {
+    opacity: 1; /* End with opacity 1 (fully opaque) */
+  }
+}
+
+.the-text {
+    font-size: 7rem;
+    font-weight: bold;
+    text-align: center;
+}
+.fade-in-out-animation {
+    animation: fade 4s linear;
+}
+.fade-in-animation {
+    animation: fade-in 2s linear;
+}
+.tat-text {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: -7rem;
+    }
 </style>
