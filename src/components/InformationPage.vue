@@ -7,7 +7,7 @@
         <!-- <principles-for-execution @move-to-next="nextSub" v-if="sectionNum === 3"></principles-for-execution> -->
         <highlights  @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 3"></highlights>
       
-        <button v-if="sectionNum > 0 && showNextBtn"
+        <button v-if="sectionNum > 0 && showNextBtn || sectionNum > 0 && showBtn"
       class="nextBtn"
       @click="nextSub"
     >
@@ -39,7 +39,7 @@ export default {
         PrincipleStructure,
         Highlights,
     },
-    props: ["titleIndex", 'sectionNum'],
+    props: ["titleIndex", 'sectionNum', 'showBtn'],
     data() {
         return {
             showTitle: true,

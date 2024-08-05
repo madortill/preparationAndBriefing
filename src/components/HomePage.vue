@@ -14,6 +14,7 @@
           @to-question="showQuestion"
           @done-info-subj-one="doneInfoSubjOne"
           :sectionNum="miniSubNum"
+          :showBtn="showNextBtn"
         ></information-page>
       </div>
       <div v-if="showQuestions">
@@ -22,6 +23,7 @@
           @next-sub="nextSub"
           @to-question="showQuestion"
           @to-end-screen="toEndScreen"
+          @back-from-ques="backToQues"
         ></quick-questions>
       </div>
     </div>
@@ -56,6 +58,7 @@ export default {
       miniSubNum: -1,
       doneSubj1: false,
       beenInSubj2: false,
+      showNextBtn: false,
     };
   },
 
@@ -113,6 +116,11 @@ export default {
     },
     doneInfoSubjOne() {
       this.doneSubj1 = true;
+    },
+    backToQues() {
+      this.showQuestions = false;
+      this.indexQuestion--;
+      this.showNextBtn = true;
     }
   },
 };

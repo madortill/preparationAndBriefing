@@ -52,6 +52,9 @@
     >
       חזור
     </button>
+
+    <img v-if="indexTitle === 3" src="../../src/assets/media/notebook.svg" class="notebook" alt="notebook"/>
+    <img v-if="indexTitle === 3" src="../../src/assets/media/hand.svg" class="hand" alt="hand"/>
   </div>
 </template>
 
@@ -421,4 +424,39 @@ export default {
 .prevBtn:hover {
     background-color: #fd8aae;
 } 
+
+.notebook {
+  position: absolute;
+  bottom: 0;
+  right: 13rem;
+  width: 15rem;
+}
+
+.hand {
+  width: 9rem;
+  position: absolute;
+  bottom: -3rem;
+  right: 9rem;
+  /* height: 12rem; */
+  animation: move-hand 4s linear infinite;
+}
+
+@keyframes move-hand {
+  0% {
+    right: 9rem;
+    bottom: -3rem;
+  }
+  50% {
+    right: 11rem;
+    bottom: 0rem;
+  }
+  70% {
+    right: 9rem;
+    bottom: 0;
+  }
+  100% {
+    right: 9rem;
+    bottom: -3rem;
+  }
+}
 </style>

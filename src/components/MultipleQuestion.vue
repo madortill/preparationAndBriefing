@@ -45,6 +45,14 @@
             </div>
             <button class="nextBtn" v-if="part === 0  && this.questionInfo.Qtype === 1" @click="nextPart">הבא</button>
             <img @click="backToStory" v-if="part === 1" src="../../src/assets/media/question-mark-reminder.png" alt="reminder" class="reminder"/>
+            <p v-if="part === 1" class="reminder-text">לחץ לתזכורת לתדריך</p>
+
+            <button
+      class="prevBtn"
+      @click="backToInfo"
+    >
+      חזור
+    </button>
         </div>
     </div>
 </template>
@@ -111,6 +119,9 @@ export default {
         backToStory() {
             this.part--;
             this.$emit('last-part');
+        },
+        backToInfo() {
+            this.$emit('back-to-info');
         }
     },
 }
@@ -257,4 +268,60 @@ export default {
     margin-top: -10rem;
     width: 100%;
 }
+
+
+.prevBtn {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  height: 5%;
+  font-size: 1.6rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ff5d8f;  min-width: 10%;
+  max-width: 15%;
+  bottom: 10%;
+  right: 10%;
+}
+
+.prevBtn:hover {
+  animation: borderPulse 4000ms infinite ease-out, hoverShine 200ms;
+}
+
+
+@keyframes hoverShine {
+  0% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  50% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  100% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.4) 100%
+    );
+  }
+}
+
+.reminder-text {
+    position: absolute;
+    top: 7.5rem;
+    right: 8.5rem;
+    color: grey
+    }
 </style>

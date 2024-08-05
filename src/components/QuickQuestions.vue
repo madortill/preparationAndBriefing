@@ -1,7 +1,7 @@
 <template>
     <div id="quick-questions">
       <multiple-question v-if="questionToPass.Qtype === 0 || questionToPass.Qtype === 1" @next-question="updateIndex"
-        :questionInfo="questionToPass" :numQues="indexQ"  @next-part="nextPart" @last-part="lastPart"></multiple-question>
+        :questionInfo="questionToPass" :numQues="indexQ"  @next-part="nextPart" @last-part="lastPart" @back-to-info="backToInfo"></multiple-question>
         <dragging-question v-if="questionToPass.Qtype === 2" :key="questionToPass" @next-to-end="toTheEnd"
         :questionInfo="questionToPass"></dragging-question>
      
@@ -88,15 +88,13 @@ export default {
         },
         toTheEnd() {
             this.$emit('to-end-screen');
+        },
+        backToInfo() {
+            this.$emit('back-from-ques');
         }
         
     },
     computed: {
-        // questionToPass() {
-        //     return (
-        //         this[`questions${this.indexQuestion + 1}`][this.indexQ]
-        //     )
-        // }
         questionToPass() {
             return (
                 this[`questions`][this.indexQ]
