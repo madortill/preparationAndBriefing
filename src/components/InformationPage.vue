@@ -1,11 +1,11 @@
 <template>
     <div id="information-page">
         <!-- <h4 v-if="showTitle" class="text-side-title">{{ arrayTitle[titleIndex] }}</h4> -->
-        <main-self-preparation @move-to-ques="toTheQuestion" @move-to-next="setSubjNavbar" v-if="sectionNum === 0"></main-self-preparation>
+        <main-self-preparation @done-info-part-one="doneInfoSubjOne" @move-to-ques="toTheQuestion" @move-to-next="setSubjNavbar" v-if="sectionNum === 0"></main-self-preparation>
         <targets @show-next="showNextButton" @move-to-next="nextSub" v-if="sectionNum === 1"></targets>
         <principle-structure @move-to-next="nextSub" v-if="sectionNum === 2"></principle-structure>
-        <principles-for-execution @move-to-next="nextSub" v-if="sectionNum === 3"></principles-for-execution>
-        <highlights  @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 4"></highlights>
+        <!-- <principles-for-execution @move-to-next="nextSub" v-if="sectionNum === 3"></principles-for-execution> -->
+        <highlights  @move-to-ques="toTheQuestion" @move-to-next="nextSub" v-if="sectionNum === 3"></highlights>
       
         <button v-if="sectionNum > 0 && showNextBtn"
       class="nextBtn"
@@ -13,15 +13,7 @@
     >
       הבא
     </button>
-    <button
-     v-if="sectionNum > 1 "
-      class="prevBtn"
-      @click="lastSub"
-    >
-      חזור
-    </button>
-
-        <!-- <component :is="'subj' + titleIndex"></component> -->
+  
 
     </div>
 </template>
@@ -30,7 +22,6 @@
 import MainSelfPreparation from '@/components/MainSelfPreparation.vue'; 
 import Targets from './Targets.vue';
 import PrincipleStructure from './PrincipleStructure.vue';
-import PrinciplesForExecution from './PrinciplesForExecution.vue';
 import Highlights from './Highlights.vue';
 
 
@@ -40,7 +31,6 @@ export default {
         MainSelfPreparation, 
         Targets,
         PrincipleStructure,
-        PrinciplesForExecution,
         Highlights,
     },
     props: ["titleIndex", 'sectionNum'],
@@ -53,7 +43,6 @@ export default {
                 'איתור מקור התופעות',
                 'התנגדויות במשוב',
             ],
-            showPrevBtn: false,
             showNextBtn: false,
         };
     },
@@ -66,7 +55,7 @@ export default {
         },
 
         nextSub() {
-            if(this.sectionNum === 4) {
+            if(this.sectionNum === 3) {
                 console.log('hi');
                 this.toTheQuestion();
             } else {
@@ -77,17 +66,15 @@ export default {
         lastSub() {
             this.$emit('prev-sub');
         },
-        // nextSection(subNum) {
-        //     this.sectionNum++;
-        //     this.nextSub(subNum);
-        // },
         showNextButton() {
             let timer = setTimeout(()=> {
                 this.showNextBtn = true;
                 clearTimeout(timer);
             }, 900);
+        },
+        doneInfoSubjOne() {
+            this.$emit('done-info-subj-one');
         }
-    
     },
 }
 
@@ -124,25 +111,5 @@ export default {
     background-color: #fd8aae;
 }
 
-.prevBtn {
-    position: absolute;
-  border: none;
-  cursor: pointer;
-  height: 5%;
-  font-size: 1.4rem;
-  color: #ffffff;
-  border-radius: 100px;
-  background-color: #ff5d8f;
-  min-width: 10%;
-  max-width: 15%;
-  bottom: 10%;
-  animation: fade 2s ease-in-out;
-   
-    right: 10%;
-    transition: background-color 0.3s linear;
-}
 
-.prevBtn:hover {
-    background-color: #fd8aae;
-} 
 </style>

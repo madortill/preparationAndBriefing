@@ -32,7 +32,7 @@
     </div>
 
     <!-- the area info -->
-    <features @next-info="nextInfo" v-if="indexTitle === 2"></features>
+    <features @next-info="nextInfo" @prev-info="prevInfo" v-if="indexTitle === 2"></features>
     <mission-planning v-if="indexTitle === 1"></mission-planning>
 
     <button
@@ -45,12 +45,13 @@
     >
       {{ nextBtnText }}
     </button>
-    <!-- <button
+    <button
+    v-if="showPrevBtn"
       class="prevBtn"
       @click="backToFirstLF"
     >
       חזור
-    </button> -->
+    </button>
   </div>
 </template>
 
@@ -96,6 +97,7 @@ export default {
       ableBtns: false,
       chosenSub: -1,
       nextBtnText: "המשך",
+      showPrevBtn: false,
     };
   },
   mounted() {
@@ -140,6 +142,7 @@ export default {
           this.counter++;
           if (this.counter === 3) {
             this.nextBtnText = "הבא";
+            this.$emit('done-info-part-one');
           }
         }
         this.indexTitle = 0;
@@ -151,6 +154,9 @@ export default {
     nextInfo() {
       this.indexInfo--;
     },
+    prevInfo() {
+      this.indexInfo++;
+    }
   },
 };
 </script>
@@ -224,7 +230,7 @@ export default {
   min-width: 10%;
   max-width: 15%;
   left: 7%;
-  bottom: 13%;
+  bottom: 10%;
 }
 
 .prevBtn {

@@ -4,6 +4,7 @@
     <div v-if="!showWhiteWindow">
       <div v-if="!showQuestions">
         <navbar v-if="showNav" :titleIndex="subIndex" :part="subjNum"></navbar>
+        <img v-if="(showNav && subjNum === 1) || (showNav && doneSubj1 && beenInSubj2 && subjNum === 0)" src="../../src/assets/media/replace.svg" class="replace" @click="replaceSubj" alt="replace-icon"/>
         <information-page
           :titleIndex="titleIndex"
           @next-sub="nextMiniSub"
@@ -11,6 +12,7 @@
           @set-subj-navbar= "setMiniSubInNavbar"
           @close-nav="closeNav"
           @to-question="showQuestion"
+          @done-info-subj-one="doneInfoSubjOne"
           :sectionNum="miniSubNum"
         ></information-page>
       </div>
@@ -44,7 +46,7 @@ export default {
   data() {
     return {
       showWhiteWindow: true,
-      index: 0,
+      // index: 0,
       titleIndex: 0,
       showNav: true,
       showQuestions: false,
@@ -52,6 +54,8 @@ export default {
       subIndex: -1,
       subjNum: 0,
       miniSubNum: -1,
+      doneSubj1: false,
+      beenInSubj2: false,
     };
   },
 
@@ -60,7 +64,7 @@ export default {
       this.showWhiteWindow = false;
       if(partNum === 5) {
         this.miniSubNum++;
-        this.subIndex = 0;
+        // this.subIndex = 0;
       }
       
     },
@@ -91,6 +95,25 @@ export default {
     toEndScreen() {
       this.$emit('next-page');
     },
+    replaceSubj() {
+      if(this.subjNum === 1) {
+        this.subjNum = 0;
+        this.indexQuestion = -1;
+        this.miniSubNum = 0;
+        this.subIndex = -1;
+        this.titleIndex = 0;
+        this.beenInSubj2 = true;
+      } else if(this.subjNum === 0) {
+        this.subjNum = 1;
+        this.indexQuestion = 0;
+        this.miniSubNum = 1;
+        this.subIndex = 0;
+        this.titleIndex = 0;
+      }
+    },
+    doneInfoSubjOne() {
+      this.doneSubj1 = true;
+    }
   },
 };
 </script>
@@ -100,6 +123,12 @@ export default {
   background-color: #f2f2f2;
   width: 100vw;
   height: 100vh;
+}
 
+.replace {
+  position: absolute;
+  right: 14vw;
+  top: 2.5rem;
+  width: 2.5rem;
 }
 </style>

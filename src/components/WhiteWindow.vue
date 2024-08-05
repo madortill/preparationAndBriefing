@@ -867,9 +867,6 @@ export default {
 }
 
 .explain-subj-container {
-  /* position: relative;
-  top: 0; */
-  /* margin-bottom: 10rem; */
   margin-top: 0rem;
 }
 

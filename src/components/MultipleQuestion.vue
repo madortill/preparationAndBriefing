@@ -2,6 +2,7 @@
     <div id="multiple-question">
         <div class="answers-container" @click="checkAnswer">
             <h1  v-if="part !== 0 || this.questionInfo.Qtype !== 1" class="title-questionMultiple">{{ this.questionInfo.title }}</h1>
+            <h2 v-if="this.questionInfo.Qtype === 0" class="second-instraction">בחר/י בשלוש התשובות הנכונות.</h2>
             <h1 class="title-questionMultiple" v-if="this.questionInfo.Qtype === 1  && part === 0">לפניכם ביצוע תדריך שגוי.</h1>
             <div class = "div-mulQ">
                 <!-- Qtype =  0 -->
@@ -26,7 +27,7 @@
                 <!-- Qtype =  1 -->
                  <div v-if="part === 0 && this.questionInfo.Qtype === 1">
                     <p class="explain-text">הסמלת מיה עשתה תדריך למספר מפק"ציות לקראת המשובים שלהן.
-בתחילת התדריך מיה הציגה את מטרות התצפית, עברה על דף התצפית עד הבנה מלאה, נתנה את דגשיה וסיימה בכך ששאלה אם יש להן שאלות וסיימה את התדריך.
+בתחילת התדריך מיה הציגה את מטרות התצפית, עברה על דף התצפית עד הבנה מלאה, נתנה את דגשיה ולאחר מכן שאלה אם יש להן שאלות וסיימה את התדריך.
 </p>
 
                  </div>
@@ -169,7 +170,7 @@ export default {
     /* the rem */
     padding: 8rem 15%;
     text-align: center;
-    margin: 0;
+    margin-top: -2rem;
     width: 100%;
 }
 
@@ -247,5 +248,12 @@ export default {
     top: 8%;
     right: 5rem;
     width: 16rem;
+}
+
+.second-instraction {
+    color: #5f5a5a;
+    text-align: center;
+    margin-top: -10rem;
+    width: 100%;
 }
 </style>

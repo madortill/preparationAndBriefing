@@ -21,6 +21,13 @@
 
      
     </div>
+    <button
+     v-if="showPart === 1 "
+      class="prevBtn"
+      @click="back"
+    >
+      חזור
+    </button>
   </div>
 </template>
 
@@ -46,9 +53,10 @@ export default {
     toTheQuestions() {
       this.showPart++;
       this.$emit("next-info");
-    },
+    }, 
     back() {
       this.showPart--;
+      this.$emit('prev-info');
     }
   },
 };
@@ -114,5 +122,25 @@ export default {
     padding: 0%;
 }
 
+.prevBtn {
+    position: absolute;
+  border: none;
+  cursor: pointer;
+  height: 5%;
+  font-size: 1.4rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ff5d8f;
+  min-width: 10%;
+  max-width: 15%;
+  bottom: 10%;
+  animation: fade 2s ease-in-out;
+   
+    right: 10%;
+    transition: background-color 0.3s linear;
+}
 
+.prevBtn:hover {
+    background-color: #fd8aae;
+} 
 </style>

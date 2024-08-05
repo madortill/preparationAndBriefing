@@ -66,7 +66,7 @@ this.showBtn = true;
         this.showFade = true;
         let timer =  setTimeout(()=> {
             this.part++;
-            this.text = 'כ ל      ה כ ב ו ד';
+            this.text = 'כ ל   -   ה כ ב ו ד';
             this.showFade = false;
             clearTimeout(timer);
         }, 4000);
