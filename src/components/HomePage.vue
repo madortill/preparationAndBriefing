@@ -4,7 +4,7 @@
     <div v-if="!showWhiteWindow">
       <div v-if="!showQuestions">
         <navbar v-if="showNav" :titleIndex="subIndex" :part="subjNum"></navbar>
-        <img v-if="(showNav && subjNum === 1) || (showNav && doneSubj1 && beenInSubj2 && subjNum === 0)" src="../../src/assets/media/replace.svg" class="replace" @click="replaceSubj" alt="replace-icon"/>
+        <img v-if="(showNav && subjNum === 1) || (showNav && doneSubj1 && beenInSubj2 && subjNum === 0)" title="החלף נושא" src="../../src/assets/media/replace.svg" class="replace" @click="replaceSubj" alt="replace-icon"/>
         <information-page
           :titleIndex="titleIndex"
           @next-sub="nextMiniSub"
@@ -130,5 +130,6 @@ export default {
   right: 14vw;
   top: 2.5rem;
   width: 2.5rem;
+  cursor: pointer;
 }
 </style>

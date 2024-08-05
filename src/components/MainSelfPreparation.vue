@@ -249,26 +249,10 @@ export default {
 }
 
 .nextBtn:hover,
-.prevBtn:hover,
-.callBtn:hover {
+.prevBtn:hover {
   animation: borderPulse 4000ms infinite ease-out, hoverShine 200ms;
 }
 
-.callBtn {
-  position: absolute;
-  border: none;
-  cursor: pointer;
-  border-radius: 100px;
-  background-color: #67c6c7;
-  color: #ffffff;
-  min-width: 15%;
-  max-width: 15%;
-  height: 13%;
-  font-size: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 70%;
-}
 
 @keyframes hoverShine {
   0% {

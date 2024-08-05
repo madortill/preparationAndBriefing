@@ -248,6 +248,7 @@ export default {
     top: 8%;
     right: 5rem;
     width: 16rem;
+    cursor: pointer;
 }
 
 .second-instraction {

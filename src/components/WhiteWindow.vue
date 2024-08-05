@@ -219,16 +219,6 @@
         </div>
       </div>
 
-      <!-- <button
-      v-if="partNum !== 2 && showNextBtn"
-      id="expBtn"
-      class="startBtn"
-      :class="partNum === 1 || partNum === 3 ? 'posLeftBtn' : 'posCenterBtn' + ' ' + (partNum === 5 && showNextBtn ? 'fade-in' : '')"
-      @click="nextPart"
-     
-    >
-      הבא
-    </button> -->
       <button
         v-if="partNum !== 2 && showNextBtn"
         id="expBtn"

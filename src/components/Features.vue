@@ -122,25 +122,53 @@ export default {
     padding: 0%;
 }
 
+
+
 .prevBtn {
-    position: absolute;
+  position: absolute;
   border: none;
   cursor: pointer;
   height: 5%;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #ffffff;
   border-radius: 100px;
-  background-color: #ff5d8f;
-  min-width: 10%;
+  background-color: #ff5d8f;  min-width: 10%;
   max-width: 15%;
   bottom: 10%;
-  animation: fade 2s ease-in-out;
-   
-    right: 10%;
-    transition: background-color 0.3s linear;
+  right: 10%;
 }
 
 .prevBtn:hover {
-    background-color: #fd8aae;
-} 
+  animation: borderPulse 4000ms infinite ease-out, hoverShine 200ms;
+}
+
+
+@keyframes hoverShine {
+  0% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  50% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  100% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.4) 100%
+    );
+  }
+}
 </style>
