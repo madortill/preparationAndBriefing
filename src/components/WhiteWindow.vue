@@ -152,7 +152,7 @@
           <div class="hide-bg"></div>
           <div class="jumping-window">
             <p class="adjust">
-              שלבי הכנה עצמאית ועיבוד הם שלבים עצמאים של החונך.
+              שלבי הכנה עצמית ועיבוד הם שלבים עצמאים של החונך.
             </p>
             <button
               id="expBtn"
